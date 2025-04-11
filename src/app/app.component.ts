@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
+import { RouteService } from './services/route.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
   title = 'TaskTogether';
 
   currentRoute: string = '';
+  routerService: RouteService = inject(RouteService);
 
   constructor(private router: Router) {
     // Obtener la ruta actual

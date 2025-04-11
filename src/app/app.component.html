@@ -1,11 +1,11 @@
-<div [ngClass]="{'content' : !isOnRoute('/register') && !isOnRoute('/login') && !isOnRoute('/'), 'index': isOnIndex()}">
+<div [ngClass]="{'content' : !routerService.isOnRoute('/register') && !routerService.isOnRoute('/login') && !routerService.isOnRoute('/'), 'index': isOnIndex()}">
   <header *ngIf="isOnRoute('/') || (!isOnRoute('/register') && !isOnRoute('/login'))">
     <app-header></app-header> <!---->
   </header>
-  <aside *ngIf="!isOnRoute('/') && !isOnRoute('/register') && !isOnRoute('/login')" class="inter-navbar">
+  <aside *ngIf="!routerService.isOnRoute('/') && !routerService.isOnRoute('/register') && !routerService.isOnRoute('/login')" class="inter-navbar">
     <app-navbar></app-navbar>
   </aside>
-  <main [ngClass]="{'justAForm': isOnRoute('/register') || isOnRoute('/login'), 'justAnIndex': isOnIndex()}">
+  <main [ngClass]="{'justAForm': routerService.isOnRoute('/register') || routerService.isOnRoute('/login'), 'justAnIndex': isOnIndex()}">
     <router-outlet></router-outlet>
   </main>
 </div>

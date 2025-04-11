@@ -22,10 +22,9 @@ aside {
 header {
     grid-area: 1 / 1 / 2 / 3;
     background-color: white;
-    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    right: 0; /*Aquí el position fixed me jodía todo*/
     width: 100%; /* Usa el 100% de ancho sin margen */
     margin: 0;
     padding: 0;
@@ -35,21 +34,21 @@ header {
 .content {
     display: grid;
     grid-template-columns: 190px minmax(max-content, 1fr);
-    grid-template-rows: 101px 1fr;
+    grid-template-rows: 70px 1fr;
     overflow: hidden;
     margin: 0;
-    width: 99vw; /* Mantenemos el 99vw como estaba */
-    height: 97vh; /* Mantenemos el 97vh como estaba */
+    width: 100vw; /* Mantenemos el 99vw como estaba */
+    height: 100vh; /* Mantenemos el 97vh como estaba */
     gap: 0px 10px;
 }
 
 .index {
     display: grid;
-    grid-template-rows: 101px 1fr;
+    grid-template-rows: 70px 1fr;
     overflow: hidden;
     margin: 0;
-    width: 99vw;
-    height: 97vh;
+    width: 100vw;
+    height: 100vh;
 }
 
 .justAForm {
