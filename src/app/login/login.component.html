@@ -1,0 +1,29 @@
+<div class="loginBox">
+    <header class="inter-title formBoxHeader">
+        <h1>Inicia Sesión</h1>
+    </header>
+    <form method="post" class="loginForm" [formGroup]="login" (ngSubmit)="submitForm()">
+        <div class="field inter-labelText">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" formControlName="email">
+            <small *ngIf="isInvalidField('email')">Introduzca un email válido</small>
+            
+        </div>
+        
+        <div class="field inter-labelText">
+            <label for="password">Contraseña:</label>
+            <input type="password" formControlName="password">
+            <b class="inter-small-bold">¿Has olvidado tu contraseña?</b>
+            <small *ngIf="isInvalidField('password')">Introduzca una contraseña</small>
+        </div>
+
+        <div class="field centered">
+            <button class="submitbutton" type="submit">Iniciar Sesión</button>
+            <b class="inter-small">¿No tienes una cuenta? <a class="inter-small-bold-link" [routerLink]="['/register']" routerLinkActive="router-link-active">Regístrate</a></b>
+            <img class="img" src="images/Logo TaskTogether.png" alt="imagen del logo circular de TaskTogether">
+
+        </div>
+
+
+    </form>
+</div>

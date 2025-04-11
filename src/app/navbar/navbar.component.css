@@ -1,0 +1,50 @@
+:root {
+    --darkblue: #011627;
+    --blue: #247BA0;
+    --green: #379634;
+    --white: #FDFFFC;
+    --yellow: #FF9F1C;
+    --background: #dcd9db;
+
+}
+
+
+
+.inter-navbar {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 20;
+    font-size: 20px;
+    font-style: normal;
+}
+
+.navbar {
+    background-color: #011627;
+    height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+}
+
+/* .links > div {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%; 
+    text-align: center; 
+    flex-direction: column;
+} */
+
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.links > div:hover {
+    cursor: pointer;
+}
+
+img {
+    display: block;
+}
+
+
+

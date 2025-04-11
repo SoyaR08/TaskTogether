@@ -1,0 +1,72 @@
+.lexend-giga-text {
+    font-family: "Lexend Giga", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 36px;
+
+}
+
+.Apptitle {
+    margin-left: 1%;
+    color: #011627;
+    text-decoration: underline #FF9F1C;
+}
+
+.displayHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+
+input {
+    border-radius: 15px;
+    background-color: #D9D9D9;
+    width: 260px;
+    height: 30px;
+    border: none;
+    padding-left: 40px;
+}
+
+form {
+    position: relative;
+    width: fit-content;
+    margin: 20px;
+}
+
+form label img {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none; /* Para que no interfiera al hacer clic */
+}
+
+.buttons > button {
+    background-color: #FF9F1C;
+    color: white;
+    border: none;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    width: 9vw;
+}
+
+.pageInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    margin-right: 2%;
+}
+
+.pageInfo > button {
+    border: none;
+    background-color: transparent;
+}

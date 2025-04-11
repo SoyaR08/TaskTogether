@@ -1,0 +1,218 @@
+:root {
+    --darkblue: #011627;
+    --blue: #247BA0;
+    --green: #379634;
+    --white: #FDFFFC;
+    --yellow: #FF9F1C;
+    --background: #dcd9db;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*Estilo para mi fuente de texto*/
+.inter-labelText {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 20;
+    font-style: normal;
+}
+
+/*Estilo para mi fuente de texto*/
+.inter-title {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 48;
+    font-style: normal;
+}
+
+.inter-small {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 13px;
+    color: #011627;
+}
+
+.inter-small-bold {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 13px;
+    color: #011627;
+    
+}
+
+.inter-small-bold-link {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 13px;
+    color: #011627;
+    text-decoration: none;
+}
+
+
+.registerBox {
+    display: flex;
+    /* Convierte el contenedor en un flexbox para que sus hijos se alineen según flexbox */
+    flex-direction: column;
+    /* Hace que los hijos (header y form) se coloquen en una columna */
+    height: 567px;
+    /* Altura fija del contenedor */
+    width: 700px;
+    /* Ancho fijo del contenedor */
+    background-color: white;
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 5px -4px 10px rgba(0, 0, 0, 0.25);
+    /*Los datos son: posición en x, posición en y (eje invertido), difumidado, color en formato rgba donde a es la opacidad*/
+
+
+
+}
+
+
+
+.registerForm {
+    flex-grow: 1;
+    /* Permite que el formulario ocupe todo el espacio disponible dentro de .registerBox */
+    display: flex;
+    /* Convierte el formulario en un flexbox para que sus elementos internos se alineen según flexbox */
+    flex-direction: row;
+    /* Coloca los elementos del formulario en una fila */
+    flex-wrap: wrap;
+    /* Permite que los elementos del formulario pasen a la siguiente línea si no caben */
+    gap: 1%;
+    margin: 4%;
+    align-content: stretch;
+    /* Alinea las líneas de elementos dentro del formulario en el centro vertical */
+    justify-content: space-between;
+    /* Distribuye los elementos dejando el máximo espacio posible entre ellos */
+}
+
+.registerForm > button {
+    margin: 0 auto;
+}
+
+
+.submitbutton {
+    background-color: #FF9F1C;
+    border-radius: 15px;
+    color: white;
+    width: 60%;
+    height: 43px;
+    border: none;
+}
+
+.submitbutton:hover {
+    transition: 0.3s;
+    background-color: hsl(35, 90%, 40%);
+    cursor: pointer;
+}
+
+.field {
+    width: 49%;
+    
+}
+
+.field >label {
+    display: block;
+}
+
+.field > input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+small {
+    color: red;
+}
+
+@media (max-width: 800px) {
+    .registerBox {
+        transition: 0.1s;
+        height: 600px;
+        /* Altura fija del contenedor */
+        width: 550px;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .registerBox {
+        height: 600px;
+        /* Altura fija del contenedor */
+        width: 400px;
+    }
+
+    .registerForm {
+        transition: 0.1s;
+        align-content: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .field {
+        width: 100%;
+        /* Cambia el ancho de los campos a 100% para pantallas pequeñas */
+    }
+
+    .submitbutton {
+        width: 100%;
+        /* Cambia el ancho del botón a 100% para pantallas pequeñas */
+    }
+}
+
+@media (max-width: 425px) {
+    .registerBox {
+        height: 600px;
+        /* Altura fija del contenedor */
+        width: 300px;
+    }
+}
+
+@media (max-width: 425px) and (max-height: 700px)  {
+    .registerBox {
+        height: 400px;
+        /* Altura fija del contenedor */
+        width: 300px;
+    }
+
+    header {
+        height: 40px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inter-title {
+        font-size: 15px;
+    }
+    
+
+    .registerForm {
+        justify-content: space-around;
+        flex-direction: row;
+    }
+
+    .field > input {
+        width: 100%;
+        height: 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+}
+

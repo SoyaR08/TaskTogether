@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --darkblue: #011627;
+    --blue: #247BA0;
+    --green: #379634;
+    --white: #FDFFFC;
+    --yellow: #FF9F1C;
+    --background: #dcd9db;
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #dcd9db;
+
+}
+
+.formBoxHeader {
+    display: flex;
+    background-color: #011627;
+    color: white;
+    height: 78px;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+aside {
+    background-color: #011627;
+}
+
+
+
+
