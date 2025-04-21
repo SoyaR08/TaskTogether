@@ -1,6 +1,7 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 export class HeaderComponent {
 
   currentRoute: string = '';
+  loginService: LoginService = inject(LoginService);
 
   constructor(private router: Router) {
     // Obtener la ruta actual

@@ -20,9 +20,13 @@
             <input type="text" name="findProject" id="findProject" placeholder="Introduzca un nombre de proyecto">
         </form>        
     </div>
-    <div class="buttons">
+    <div *ngIf="!loginService.isLoged()" class="buttons">
         <button [routerLink]="['/login']" routerLinkActive="router-link-active" >Inicia Sesión</button>
         <button [routerLink]="['/register']" routerLinkActive="router-link-active">Registrate</button>
+    </div>
+
+    <div *ngIf="loginService.isLoged()">
+        <img src="assets/account_circle.svg" alt="Circulo de cuenta" width="50" height="50">
     </div>
 </div>
 
