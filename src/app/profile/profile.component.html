@@ -1,2 +1,28 @@
-<p>profile works!</p>
-{{loginService.isLoged()}}
+Inicio > Perfil
+<div class="profileBox">
+    <div class="profile">
+        <div class="profileHeader">
+            <div class="profileImg" style="height: 200px; width: 200px; border-radius: 100%; background-color: aquamarine;"></div>
+            <h3>Nombre usuario</h3>
+            <span>correomail.com</span> | <span>Trabajo</span>
+            <br>
+            <button>Editar Perfil</button>
+        </div>
+        <div>
+            <!-- <div>
+
+                <a href="">Editar Perfil</a>
+            </div> -->
+            <div>
+                <a href="">Estadísticas</a>
+
+            </div>
+            <div>
+                <a href="">Miembros de equipo</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <app-edit-profile></app-edit-profile>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { RouteService } from '../services/route.service';
 
 @Component({
   selector: 'app-index',
@@ -6,6 +7,16 @@ import { Component } from '@angular/core';
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit {
+
+  routerservice: RouteService = inject(RouteService);
+
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.routerservice.redirectTo(['/dashboard']);
+      
+    }
+  }
 
 }

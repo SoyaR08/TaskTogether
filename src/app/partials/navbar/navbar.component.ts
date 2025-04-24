@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { RouteService } from '../services/route.service';
+import { RouteService } from '../../services/route.service';
 
 @Component({
   selector: 'app-navbar',

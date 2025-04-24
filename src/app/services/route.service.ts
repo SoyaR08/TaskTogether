@@ -19,4 +19,8 @@ export class RouteService {
   isOnRoute(route: string): boolean {
     return this.currentRoute === route;
   }
+
+  redirectTo(route: any): void {
+    this.router.navigate(route)
+   }
 }

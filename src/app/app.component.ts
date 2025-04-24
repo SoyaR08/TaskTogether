@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './partials/navbar/navbar.component';
 import { Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { HeaderComponent } from './header/header.component';

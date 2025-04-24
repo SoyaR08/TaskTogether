@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './partials/navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
 import { ProfileComponent } from './profile/profile.component';
 

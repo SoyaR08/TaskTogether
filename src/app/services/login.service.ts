@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Login } from '../interfaces/login';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -26,8 +27,14 @@ export class LoginService {
       next: response => {
         console.log(response.token.split('Bearer '));
         const token = response.token.split('Bearer ')[1];
-        localStorage.setItem('token', JSON.stringify(token));
+        localStorage.setItem('token', token);
         this.isLogedSignal.set(true);
+        Swal.fire({
+          title: '¡Exito!',
+          text: 'Sesión iniciada correctamente.',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        })
       },
       error: err => alert(err.message)
     });

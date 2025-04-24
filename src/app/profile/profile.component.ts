@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { LoginService } from '../services/login.service';
+import { EditProfileComponent } from '../partials/edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile',
-  imports: [],
+  imports: [EditProfileComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
