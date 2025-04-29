@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges, signal, Signal, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -6,21 +6,27 @@ import { Router } from '@angular/router';
 })
 export class RouteService {
 
-  private currentRoute: string = '';
+  private currentRoute = signal<string>('');
   constructor(private router: Router) {
-    this.currentRoute = this.router.url;
+    this.currentRoute.set(this.router.url);
 
     // Suscribirse a los cambios de la ruta
     this.router.events.subscribe(() => {
-      this.currentRoute = this.router.url;
+      this.currentRoute.set(this.router.url);
     });
   }
 
+
+
+  get actualRoute(): Signal<string> {
+    return this.currentRoute.asReadonly();
+  }
+
   isOnRoute(route: string): boolean {
-    return this.currentRoute === route;
+    return this.currentRoute() === route;
   }
 
   redirectTo(route: any): void {
     this.router.navigate(route)
-   }
+  }
 }

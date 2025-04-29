@@ -1,0 +1,4 @@
+<p>{{routeService.actualRoute()}}</p>
+@for (part of pathFormater(routeService.actualRoute()); track routeService) {
+    <span>{{part}}</span><span>></span>
+}

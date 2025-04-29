@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { RouteService } from './services/route.service';
+import { BreadcrumComponent } from './partials/breadcrum/breadcrum.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, HeaderComponent ,NgClass, NgIf],
+  imports: [RouterOutlet, NavbarComponent, HeaderComponent, BreadcrumComponent , NgClass, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -6,6 +6,7 @@
     <app-navbar></app-navbar>
   </aside>
   <main [ngClass]="{'justAForm': routerService.isOnRoute('/register') || routerService.isOnRoute('/login'), 'justAnIndex': isOnIndex()}">
+    <app-breadcrum></app-breadcrum>
     <router-outlet></router-outlet>
   </main>
 </div>
