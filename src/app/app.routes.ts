@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './partials/navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
 
 export const routes: Routes = [
     
@@ -13,5 +14,6 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'prueba', component: NavbarComponent},
+    {path: 'adminSection', component: UserListComponent},
     {path: '**', component: LoginComponent}
 ];

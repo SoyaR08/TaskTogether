@@ -1,11 +1,11 @@
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, NgIf],
+  imports: [RouterLink, RouterLinkActive, NgIf, NgClass],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -13,6 +13,7 @@ export class HeaderComponent {
 
   currentRoute: string = '';
   loginService: LoginService = inject(LoginService);
+  openDropdown: boolean = false;
 
   constructor(private router: Router) {
     // Obtener la ruta actual

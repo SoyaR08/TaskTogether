@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Login } from '../interfaces/login';
 import Swal from 'sweetalert2';
-
+import { jwtDecode } from 'jwt-decode';
+import { UserMinimumDetails } from '../interfaces/user-minimum-details';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,22 @@ export class LoginService {
 
   private baseUrl = 'http://localhost:8080/';
   private isLogedSignal = signal<boolean>(false);
+  private userDetails = signal<UserMinimumDetails>({email: '', role: ''});
   constructor(private http: HttpClient) {
     const token: string | null = localStorage.getItem('token');
     if (token) {
       this.isLogedSignal.set(true)
+      this.userDetails.set(jwtDecode<UserMinimumDetails>(token));
+      
     }
   }
 
   get isLoged() {
     return this.isLogedSignal.asReadonly();
+  }
+
+  get user() {
+    return this.userDetails.asReadonly();
   }
 
   signin(login: Login) {
@@ -39,5 +47,9 @@ export class LoginService {
       error: err => alert(err.message)
     });
     
+  }
+
+  isAdmin() {
+    return this.userDetails().role === 'GEN_ADMIN';
   }
 }

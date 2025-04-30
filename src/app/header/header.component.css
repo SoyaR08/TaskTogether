@@ -45,10 +45,11 @@ form label img {
     transform: translateY(-50%);
     width: 20px;
     height: 20px;
-    pointer-events: none; /* Para que no interfiera al hacer clic */
+    pointer-events: none;
+    /* Para que no interfiera al hacer clic */
 }
 
-.buttons > button {
+.buttons>button {
     background-color: #FF9F1C;
     color: white;
     border: none;
@@ -67,7 +68,47 @@ form label img {
     margin-right: 2%;
 }
 
-.pageInfo > button {
+.pageInfo>button {
     border: none;
     background-color: transparent;
+}
+
+/*Estilo para el dropdown*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0; /* << Cambiado de 'left' por defecto a 'right' */
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content-opened a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content-opened a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content-opened {
+    display: block;
+    position: absolute;
+    right: 0; /* << Cambiado de 'left' por defecto a 'right' */
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
 }

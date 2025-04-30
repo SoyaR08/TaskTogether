@@ -25,8 +25,13 @@
         <button [routerLink]="['/register']" routerLinkActive="router-link-active">Registrate</button>
     </div>
 
-    <div *ngIf="loginService.isLoged()">
-        <img src="assets/account_circle.svg" alt="Circulo de cuenta" width="50" height="50">
+    <div (click)="openDropdown = !openDropdown" class="dropdown" *ngIf="loginService.isLoged()">
+        <img class="dropdown-btn" src="assets/account_circle.svg" alt="Circulo de cuenta" width="50" height="50">
+        <div [ngClass]="{'dropdown-content': !openDropdown, 'dropdown-content-opened': openDropdown}" >
+            <a [routerLink]="['/profile']" routerLinkActive="router-link-active">Perfil</a>
+            <a [routerLink]="['/adminSection']" routerLinkActive="router-link-active"  *ngIf="loginService.isAdmin()">Sección de administrador</a>
+            <a href="#">Opción 3</a>
+        </div>
     </div>
 </div>
 
