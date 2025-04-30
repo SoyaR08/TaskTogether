@@ -3,5 +3,6 @@ export interface UserInfoPresentation {
     name: string;
     email: string;
     address: string;
+    job: string
     role: string;
 }

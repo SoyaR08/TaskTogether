@@ -1,11 +1,62 @@
-<table>
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Correo electrónico</th>
-            <th>Dirección</th>
-            <th>Trabajo</th>
-            <th>Rol</th>
-        </tr>
-    </thead>
-</table>
+<div class="usersTable">
+
+    <div>
+        <label for="filterForm">Filtrar por:</label>
+        <select name="filterForm" id="filterForm" [(ngModel)]="filter">
+            <option value="">Sin filtro</option>
+            <option value="GEN_ADMIN">Administradores</option>
+            <option value="USER">Usuarios regulares</option>
+        </select>
+
+        <label for="">Ordenar por:</label>
+        <select name="" id="" [(ngModel)]="order">
+            <option value="">Orden por defecto</option>
+            <option value="name_asc">Nombre Ascendente</option>
+            <option value="name_desc">Nombre Descendente</option>
+            <option value="mail_asc">Correo electrónico Ascendente</option>
+            <option value="mail_desc">Correo electrónico Descendente</option>
+        </select>
+
+        <!-- <button (click)="admin.filteredData(filter)">Filtrar y ordenar</button> -->
+
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo electrónico</th>
+                <th>Dirección</th>
+                <th>Trabajo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="admin.isLoading()">
+            <tr>
+              <td colspan="5">
+                <div class="loader">
+                  <span class="loader-text">Cargando...</span>
+                  <span class="load"></span>
+                </div>
+              </td>
+            </tr>
+        </tbody>
+          
+          <tbody *ngIf="!admin.isLoading()">
+            <tr class="tableBody" *ngFor="let user of admin.filteredData(filter, order)">
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{formatNulls(user.address)}}</td>
+              <td>{{formatNulls(user.job)}}</td>
+              <td>{{formatRole(user.role)}}</td>
+              <td>
+                <button>Confirmar cambios</button>
+              </td>
+            </tr>
+          </tbody>
+          
+    </table>
+
+</div>
+  
