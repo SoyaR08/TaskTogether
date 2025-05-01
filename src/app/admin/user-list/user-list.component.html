@@ -29,7 +29,6 @@
                 <th>Dirección</th>
                 <th>Trabajo</th>
                 <th>Rol</th>
-                <th>Acciones</th>
             </tr>
         </thead>
         <tbody *ngIf="admin.isLoading()">
@@ -49,9 +48,15 @@
               <td>{{user.email}}</td>
               <td>{{formatNulls(user.address)}}</td>
               <td>{{formatNulls(user.job)}}</td>
-              <td>{{formatRole(user.role)}}</td>
               <td>
-                <button>Confirmar cambios</button>
+                <form (ngSubmit)="changeRole(user.role, user.id.valueOf())">
+                  <input type="number" hidden [value]="user.id">
+                  <select [(ngModel)]="user.role" name="role--{{user.id}}">
+                    <option [ngValue]="'GEN_ADMIN'">Administrador</option>
+                    <option [ngValue]="'USER'">Usuario</option>
+                  </select>
+                  <button type="submit">Confirmar cambios</button>
+                </form>
               </td>
             </tr>
           </tbody>

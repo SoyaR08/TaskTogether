@@ -1,7 +1,8 @@
-import { Component, inject, OnChanges, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AdminService } from '../services/admin.service';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 
 
@@ -11,11 +12,12 @@ import { FormsModule, NgModel } from '@angular/forms';
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
-export class UserListComponent implements OnInit{
+export class UserListComponent implements OnInit {
 
   filter: string = '';
   order: string = '';
   admin: AdminService = inject(AdminService);
+
 
 
   ngOnInit(): void {
@@ -34,6 +36,33 @@ export class UserListComponent implements OnInit{
     }
 
     return map[data];
+  }
+
+  changeRole(role: any, id: number) {
+    const object = {
+      id: id,
+      newRole: role
+    }
+
+    this.admin.changeRole(object)
+      .subscribe({
+        next: () => {
+          Swal.fire({
+            title: '¡Exito!',
+            text: 'Rol editado con éxito',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          })
+        },
+        error: () => {
+          Swal.fire({
+            title: '¡Error!',
+            text: 'Error al editar',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          })
+        }
+      })
   }
 
 }

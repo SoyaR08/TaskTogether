@@ -12,20 +12,6 @@ export class AdminService {
   private users = signal<UserInfoPresentation[]>([])
   private loadingData = signal<boolean>(true);
 
-  private setHeaders() {
-    const token: string | null = localStorage.getItem('token');
-
-    const headers = new HttpHeaders({
-      'Autorization': `Bearer ${token}`,
-    })
-
-    return headers;
-  }
-
-  get userList() {
-    return this.users.asReadonly();
-  }
-
   get isLoading() {
     return this.loadingData.asReadonly()
   }
@@ -48,7 +34,7 @@ export class AdminService {
     })
   }
 
-  filteredData(criteria?: string, orderCriteria?: string) {
+  filteredData(criteria?: string, orderCriteria?: string): UserInfoPresentation[] {
     switch (criteria) {
       case 'GEN_ADMIN':
       case 'USER':
@@ -58,7 +44,7 @@ export class AdminService {
     }
   }
 
-  orderData(criteria?: string) {
+  orderData(criteria?: string): UserInfoPresentation[] {
     switch (criteria) {
       case 'name_asc':
         return this.users().sort((user1, user2) => user1.name.localeCompare(user2.name))
@@ -71,6 +57,16 @@ export class AdminService {
       default:
         return this.users().sort((user1, user2) => user1.id.valueOf() - user2.id.valueOf());
     }
+  }
+
+  changeRole(object: {id: Number, newRole: string}) {
+    const token: string | null = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+
+    return this.http.put<{id: Number, newRole: string}>(`${this.baseUrl}users/role/${object.id}`, object, {headers})
   }
 
 }
