@@ -29,4 +29,12 @@ export class RouteService {
   redirectTo(route: any): void {
     this.router.navigate(route)
   }
+
+  /**
+   * Método para simplificar las comprobaciones de ruta
+   * @returns true: Si se encuentra en las rutas que contienen solo un formulario; login y register
+   */
+  isJustAForm(): boolean {
+    return this.isOnRoute('/register') || this.isOnRoute('/login')
+  }
 }

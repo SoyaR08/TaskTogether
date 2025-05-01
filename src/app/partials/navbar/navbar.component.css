@@ -58,5 +58,15 @@ img {
     display: block;
 }
 
+@media (max-width: 1170px) {
+    .navbar {
+        height: 190px;
+        width: 100vw;
+        flex-direction: row;
+    }
 
+    .navbar > div {
+        width: 100%;
+    }
+}
 

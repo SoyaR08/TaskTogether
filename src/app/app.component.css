@@ -10,8 +10,8 @@
 
 
 html, body {
-    height: 100%; /* Asegura que html y body ocupen toda la pantalla */
-    width: 100%; /* Asegura que html y body ocupen todo el ancho */
+    height: 100vh; /* Asegura que html y body ocupen toda la pantalla */
+    width: 100vw; /* Asegura que html y body ocupen todo el ancho */
     overflow: hidden; /* Elimina el scroll */
 }
 
@@ -70,5 +70,35 @@ main {
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 1170px) {
+    /* 1) Hacer que html y body llenen todo el viewport y no tengan márgenes */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+  
+    /* 2) .content como flex column que ocupe 100vh */
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* header arriba, aside abajo */
+      height: 100vh;                  /* fuerza 100% de la ventana */
+    }
+  
+    /* 3) header y aside no crecen ni encogen */
+    header,
+    aside {
+      flex: none;     /* no flex-grow, no flex-shrink */
+      margin: 0;      /* evitar márgenes colapsados */
+    }
+  
+    /* 4) main se expande y añade scroll interno si hace falta */
+    main {
+      flex: none;        /* ocupa todo el espacio intermedio */
+      overflow-y: auto; /* si el contenido es muy largo, scroll aquí */
+    }
+  }
+  
 
 

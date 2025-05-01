@@ -112,3 +112,9 @@ form label img {
     z-index: 1;
     border-radius: 5px;
 }
+
+@media (max-width: 1444px) {
+    .displayHeader {
+        width: 100vw;
+    }
+}

@@ -1,29 +1,34 @@
 <div class="usersTable">
 
-    <div>
+    <div class="manageInfo">
+
+      <div class="filter">
         <label for="filterForm">Filtrar por:</label>
         <select name="filterForm" id="filterForm" [(ngModel)]="filter">
             <option value="">Sin filtro</option>
             <option value="GEN_ADMIN">Administradores</option>
             <option value="USER">Usuarios regulares</option>
         </select>
+      </div>
 
-        <label for="">Ordenar por:</label>
-        <select name="" id="" [(ngModel)]="order">
+      <div class="order">
+        <label for="orderForm">Ordenar por:</label>
+        <select name="orderForm" id="orderForm" [(ngModel)]="order">
             <option value="">Orden por defecto</option>
             <option value="name_asc">Nombre Ascendente</option>
             <option value="name_desc">Nombre Descendente</option>
             <option value="mail_asc">Correo electrónico Ascendente</option>
             <option value="mail_desc">Correo electrónico Descendente</option>
         </select>
+      </div>
 
-        <!-- <button (click)="admin.filteredData(filter)">Filtrar y ordenar</button> -->
+
 
     </div>
 
     <table>
         <thead>
-            <tr>
+            <tr class="header">
                 <th>Nombre</th>
                 <th>Correo electrónico</th>
                 <th>Dirección</th>
@@ -55,7 +60,7 @@
                     <option [ngValue]="'GEN_ADMIN'">Administrador</option>
                     <option [ngValue]="'USER'">Usuario</option>
                   </select>
-                  <button type="submit">Confirmar cambios</button>
+                  <button class="button" type="submit">Confirmar cambios</button>
                 </form>
               </td>
             </tr>

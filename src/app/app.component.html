@@ -1,14 +1,15 @@
 <div [ngClass]="{'content' : !routerService.isOnRoute('/register') && !routerService.isOnRoute('/login') && !routerService.isOnRoute('/'), 'index': isOnIndex()}">
-  <header *ngIf="isOnRoute('/') || (!isOnRoute('/register') && !isOnRoute('/login'))">
+  <header *ngIf="isOnRoute('/') || !routerService.isJustAForm()">
     <app-header></app-header> <!---->
   </header>
-  <aside *ngIf="!routerService.isOnRoute('/') && !routerService.isOnRoute('/register') && !routerService.isOnRoute('/login')" class="inter-navbar">
-    <app-navbar></app-navbar>
-  </aside>
-  <main [ngClass]="{'justAForm': routerService.isOnRoute('/register') || routerService.isOnRoute('/login'), 'justAnIndex': isOnIndex()}">
+  <!--Lógica de los cambios en el grid simplificada-->
+  <main [ngClass]="{'justAForm': routerService.isJustAForm()}">
     <app-breadcrum></app-breadcrum>
     <router-outlet></router-outlet>
   </main>
+  <aside *ngIf="!routerService.isOnRoute('/') && !routerService.isJustAForm()" class="inter-navbar">
+    <app-navbar></app-navbar>
+  </aside>
 </div>
 
 

@@ -18,7 +18,10 @@ export class BreadcrumComponent {
     const map: Record<string, string> = {
       "dashboard": "Inicio",
       "projects": "Mis Proyectos",
-      "tasks": "Tareas Pendientes"
+      "tasks": "Tareas Pendientes",
+      "profile": "Perfil",
+      "adminSection": "Vista de Administrador",
+      "list": "Listado de Usuarios"
     };
 
     const formatedPath: string[] = noSlashedPath.map(
