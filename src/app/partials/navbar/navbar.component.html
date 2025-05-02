@@ -1,7 +1,16 @@
 <aside class="navbar inter-navbar">
     <div [ngClass]="{'selected': routerService.isOnRoute('/dashboard')}" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
-        <img [src]="!routerService.isOnRoute('/dashboard') ? ['assets/homebasic.svg'] : ['assets/homefilled.svg']" 
-        alt="icono de casita de inicio" width="50" height="50">
+
+
+        <!-- <img [src]="!routerService.isOnRoute('/dashboard') ? ['assets/homebasic.svg'] : ['assets/homefilled.svg']" 
+        alt="icono de casita de inicio" width="50" height="50"> -->
+        
+        @if (!routerService.isOnRoute('/dashboard')) {
+            <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/>
+            </svg>
+        }
+        
         <a>Inicio</a>
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/projects')}" [routerLink]="['/projects']" routerLinkActive="router-link-active">

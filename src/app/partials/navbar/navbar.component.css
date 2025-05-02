@@ -1,15 +1,13 @@
 :root {
     --darkblue: #011627;
     --blue: #247BA0;
-    --green: #379634;
+    --green: #369633;
     --white: #FDFFFC;
     --yellow: #FF9F1C;
     --background: #dcd9db;
-
 }
 
-
-
+/* Tipografía Inter */
 .inter-navbar {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
@@ -18,9 +16,19 @@
     font-style: normal;
 }
 
+.svg {
+    display: block;
+    height: 50px;
+    width: 50px;
+    fill: var(--white);
+}
+
+
+/* Barra lateral vertical */
 .navbar {
-    background-color: #011627;
-    height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+    background-color: var(--darkblue);
+    height: 100vh;
+    width: 190px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,44 +37,66 @@
 
 .navbar > div {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
     height: 15%;
-    width: 120%; 
-    text-align: center; 
+    width: 100%;
+    text-align: center;
     flex-direction: column;
-} 
+    transition: background-color 0.3s ease;
+}
 
+/* Estilo para el item seleccionado */
 .navbar > div.selected {
     background-color: #034880;
-} 
+}
 
-.navbar > div:hover {
+/* Hover solo si NO está seleccionado */
+.navbar > div:hover:not(.selected) {
     background-color: #022542;
 }
 
+/* Enlaces blancos */
 a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
 }
 
+/* Puntero al pasar por encima */
 .links > div:hover {
     cursor: pointer;
 }
 
+/* Imagen sin margen extra */
 img {
     display: block;
 }
 
+/* Adaptación a móviles */
 @media (max-width: 1170px) {
+
+    .inter-navbar {
+        font-size: 15px;
+    }
+
     .navbar {
-        height: 190px;
+        height: 100px;
         width: 100vw;
         flex-direction: row;
     }
 
     .navbar > div {
         width: 100%;
+        height: auto;
+    }
+
+    .navbar > div.selected {
+        background-color: #034880;
+        padding: 14px;
+    }
+
+    .navbar > div:hover:not(.selected) {
+        background-color: #022542;
+        padding: 14px;
     }
 }
-

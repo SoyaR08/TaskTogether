@@ -16,5 +16,5 @@ export const routes: Routes = [
     {path: 'prueba', component: NavbarComponent},
     {path: 'adminSection', loadChildren: () => import('./admin/adminroutes').then(m => m.routes)}, 
     //con esto cargan las rutas perezosas de quedando así => /adminSection/ruta
-    {path: '**', component: NavbarComponent}
+    {path: '**', component: LoginComponent}
 ];
