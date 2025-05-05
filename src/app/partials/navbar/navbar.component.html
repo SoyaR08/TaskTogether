@@ -1,29 +1,33 @@
 <aside class="navbar inter-navbar">
-    <div [ngClass]="{'selected': routerService.isOnRoute('/dashboard')}" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
+    <div [ngClass]="{'selected': routerService.isOnRoute('/dashboard')}" [routerLink]="['/dashboard']"
+        routerLinkActive="router-link-active">
 
-
-        <!-- <img [src]="!routerService.isOnRoute('/dashboard') ? ['assets/homebasic.svg'] : ['assets/homefilled.svg']" 
-        alt="icono de casita de inicio" width="50" height="50"> -->
-        
         @if (!routerService.isOnRoute('/dashboard')) {
-            <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-                <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/>
-            </svg>
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+            <path
+                d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
+        </svg>
+        } @else {
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+            <path d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z" />
+        </svg>
         }
-        
+
         <a>Inicio</a>
     </div>
-    <div [ngClass]="{'selected': routerService.isOnRoute('/projects')}" [routerLink]="['/projects']" routerLinkActive="router-link-active">
-        <img [src]="!routerService.isOnRoute('/projects') ? ['assets/folder.svg'] : ['assets/folder_openfilled.svg']" 
-        alt="carpeta de proyectos" width="50" height="50"> 
+    <div [ngClass]="{'selected': routerService.isOnRoute('/projects')}" [routerLink]="['/projects']"
+        routerLinkActive="router-link-active">
+        <img [src]="!routerService.isOnRoute('/projects') ? ['assets/folder.svg'] : ['assets/folder_openfilled.svg']"
+            alt="carpeta de proyectos" width="50" height="50">
         <a>Mis Proyectos</a>
     </div>
-    <div [ngClass]="{'selected': routerService.isOnRoute('/tasks')}" [routerLink]="['/tasks']" routerLinkActive="router-link-active">
-        <img [src]="!routerService.isOnRoute('/tasks') ? ['assets/clipboard.svg'] : ['assets/clipboardfilled.svg']" 
-        alt="portapapeles" width="50" height="50">
+    <div [ngClass]="{'selected': routerService.isOnRoute('/tasks')}" [routerLink]="['/tasks']"
+        routerLinkActive="router-link-active">
+        <img [src]="!routerService.isOnRoute('/tasks') ? ['assets/clipboard.svg'] : ['assets/clipboardfilled.svg']"
+            alt="portapapeles" width="50" height="50">
         <a>Tareas</a>
     </div>
-    <div [ngClass]="{'selected': routerService.isOnRoute('/projects/newProject')}">
+    <div [ngClass]="{'selected': routerService.isOnRoute('/projects/newProject')}" [routerLink]="['/projects/newproject']">
         <img [src]="['assets/add_circle.svg']" alt="portapapeles" width="50" height="50">
         <a>Nuevo Proyecto</a>
     </div>

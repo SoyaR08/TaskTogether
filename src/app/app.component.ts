@@ -3,9 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './partials/navbar/navbar.component';
 import { Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
 import { RouteService } from './services/route.service';
 import { BreadcrumComponent } from './partials/breadcrum/breadcrum.component';
+import { HeaderComponent } from './partials/header/header.component';
 
 @Component({
   selector: 'app-root',

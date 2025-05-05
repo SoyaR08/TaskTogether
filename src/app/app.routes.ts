@@ -5,6 +5,7 @@ import { NavbarComponent } from './partials/navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserListComponent } from './admin/user-list/user-list.component';
+import { NewProjectComponent } from './new-project/new-project.component';
 
 export const routes: Routes = [
     
@@ -13,7 +14,11 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
     {path: 'profile', component: ProfileComponent},
-    {path: 'prueba', component: NavbarComponent},
+    {path: 'projects', children: [
+        {path: '', component: NewProjectComponent},
+        {path: 'newproject', component: NewProjectComponent}
+    ]},
+    //{path: 'prueba', component: NavbarComponent},
     {path: 'adminSection', loadChildren: () => import('./admin/adminroutes').then(m => m.routes)}, 
     //con esto cargan las rutas perezosas de quedando así => /adminSection/ruta
     {path: '**', component: LoginComponent}

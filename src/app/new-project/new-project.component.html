@@ -1,0 +1,47 @@
+<div class="NewProjectBox">
+    <header class="inter-title formBoxHeader">
+        <h1>Crear Proyecto</h1>
+    </header>
+    <form method="post" class="NewProjectForm" [formGroup]="project" (submit)="submit()">
+
+        <div class="upTeam">
+            <div class="field inter-labelText">
+                <label for="name">Nombre Proyecto:</label>
+                <input type="text" formControlName="name">
+                <!-- <small *ngIf="isInvalidField('email')">Introduzca un email válido</small> -->
+                
+            </div>
+            
+            <div class="field inter-labelText">
+                <label for="password">Fecha Inicio:</label>
+                <input type="date" formControlName="start_date">
+                <!-- <small *ngIf="isInvalidField('password')">Introduzca una contraseña</small> -->
+            </div>
+
+        </div>
+
+        <div class="downTeam">
+            <div class="field inter-labelText">
+                <label for="password">Descripción:</label>
+                <textarea name="" id="" formControlName="description"></textarea>
+                <!-- <small *ngIf="isInvalidField('password')">Introduzca una contraseña</small> -->
+            </div>
+    
+            <div class="field inter-labelText">
+                <label for="password">Fecha Fin:</label>
+                <input type="date" formControlName="end_date">
+                <!-- <small *ngIf="isInvalidField('password')">Introduzca una contraseña</small> -->
+            </div>
+
+        </div>
+
+
+        <div class="field centered">
+            <button class="submitbutton" type="submit">Crear proyecto</button>
+            <img class="img" src="images/Logo TaskTogether.png" alt="imagen del logo circular de TaskTogether">
+
+        </div>
+
+
+    </form>
+</div>
