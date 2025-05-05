@@ -44,7 +44,8 @@ export class LoginService {
           text: 'Sesión iniciada correctamente.',
           icon: 'success',
           confirmButtonText: 'Aceptar'
-        })
+        });
+        this.router.navigate(['/dashboard'])
       },
       error: err => {
         Swal.fire({

@@ -4,6 +4,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { RouteService } from '../services/route.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
 
   private fb: FormBuilder = inject(FormBuilder);
   private service: LoginService = inject(LoginService);
+  private router: RouteService = inject(RouteService);
 
   login: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],

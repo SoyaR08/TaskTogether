@@ -3,6 +3,8 @@ import { AdminService } from '../services/admin.service';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { LoginService } from '../../services/login.service';
+import { RouteService } from '../../services/route.service';
 
 
 
@@ -17,10 +19,16 @@ export class UserListComponent implements OnInit {
   filter: string = '';
   order: string = '';
   admin: AdminService = inject(AdminService);
-
+  private user: LoginService = inject(LoginService);
+  private router: RouteService = inject(RouteService);
 
 
   ngOnInit(): void {
+
+    if(!this.user.isAdmin()) {
+      this.router.redirectTo(['/dashboard'])
+    }
+
     this.admin.getAllUsers();
 
   }
