@@ -8,14 +8,15 @@
             <div class="field inter-labelText">
                 <label for="name">Nombre Proyecto:</label>
                 <input type="text" formControlName="name">
-                <!-- <small *ngIf="isInvalidField('email')">Introduzca un email válido</small> -->
+                <small *ngIf="isInvalidField('name')">Introduzca un nombre de entre 3 y 50 caracteres</small>
                 
             </div>
             
             <div class="field inter-labelText">
                 <label for="password">Fecha Inicio:</label>
                 <input type="date" formControlName="start_date">
-                <!-- <small *ngIf="isInvalidField('password')">Introduzca una contraseña</small> -->
+                <small *ngIf="isInvalidField('start_date')">Elija una fecha válida</small>
+                <small *ngIf="project.errors?.['fechaInvalida'] && project.touched">{{ project.errors?.['fechaInvalida'] }}</small>
             </div>
 
         </div>
@@ -24,13 +25,13 @@
             <div class="field inter-labelText">
                 <label for="password">Descripción:</label>
                 <textarea name="" id="" formControlName="description"></textarea>
-                <!-- <small *ngIf="isInvalidField('password')">Introduzca una contraseña</small> -->
+                <small *ngIf="isInvalidField('description')">Introduzca una breve descripción de entre 20 y 300 caracteres</small>
             </div>
     
             <div class="field inter-labelText">
                 <label for="password">Fecha Fin:</label>
                 <input type="date" formControlName="end_date">
-                <!-- <small *ngIf="isInvalidField('password')">Introduzca una contraseña</small> -->
+                <small *ngIf="isInvalidField('end_date')">Elija una fecha válida</small>
             </div>
 
         </div>

@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal, inject } from '@angular/core';
 import { Login } from '../interfaces/login';
 import Swal from 'sweetalert2';
 import { jwtDecode } from 'jwt-decode';
 import { UserMinimumDetails } from '../interfaces/user-minimum-details';
 import { Router } from '@angular/router';
+import { DecodedToken } from '../interfaces/decoded-token';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,15 @@ export class LoginService {
 
   private baseUrl = 'http://localhost:8080/';
   private isLogedSignal = signal<boolean>(false);
-  private userDetails = signal<UserMinimumDetails>({email: '', role: ''});
+  private userDetails = signal<UserMinimumDetails>({ id: 0, name: '', email: '', role: '', address: '', job: '' });
   private router: Router = inject(Router)
+  
   constructor(private http: HttpClient) {
     const token: string | null = localStorage.getItem('token');
     if (token) {
       this.isLogedSignal.set(true)
-      this.userDetails.set(jwtDecode<UserMinimumDetails>(token));
-      
+      this.findUserByHisMail(jwtDecode<DecodedToken>(token).email);
+
     }
   }
 
@@ -33,7 +35,7 @@ export class LoginService {
   }
 
   signin(login: Login) {
-    this.http.post<{token: string}>(`${this.baseUrl}signin`, login).subscribe({
+    this.http.post<{ token: string }>(`${this.baseUrl}signin`, login).subscribe({
       next: response => {
         console.log(response.token.split('Bearer '));
         const token = response.token.split('Bearer ')[1];
@@ -47,7 +49,7 @@ export class LoginService {
         });
         this.router.navigate(['/dashboard'])
       },
-      error: err => {
+      error: () => {
         Swal.fire({
           title: 'Error al iniciar sesión',
           text: 'El correo electrónico o contraseña son incorrectos',
@@ -56,17 +58,32 @@ export class LoginService {
         })
       }
     });
-    
+
   }
 
   logout() {
     localStorage.removeItem('token');
     this.isLogedSignal.set(false);
-    this.userDetails.set({email: '', role: ''});
+    this.userDetails.set({ id: 0, name: '', email: '', role: '', address: '', job: '' });
     this.router.navigate(['/login'])
   }
 
   isAdmin() {
     return this.userDetails().role === 'GEN_ADMIN';
+  }
+
+  findUserByHisMail(email: string) {
+
+    const token: string | null = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+
+    this.http.get<UserMinimumDetails>(`${this.baseUrl}api/users/${email}`, { headers })
+      .subscribe({
+        next: response => this.userDetails.set(response),
+        error: err => console.log(err)
+      })
   }
 }
