@@ -16,7 +16,7 @@ export class LoginService {
   private isLogedSignal = signal<boolean>(false);
   private userDetails = signal<UserMinimumDetails>({ id: 0, name: '', email: '', role: '', address: '', job: '' });
   private router: Router = inject(Router)
-  
+
   constructor(private http: HttpClient) {
     const token: string | null = localStorage.getItem('token');
     if (token) {
@@ -82,7 +82,9 @@ export class LoginService {
 
     this.http.get<UserMinimumDetails>(`${this.baseUrl}api/users/${email}`, { headers })
       .subscribe({
-        next: response => this.userDetails.set(response),
+        next: response => {
+          this.userDetails.set(response)
+        },
         error: err => console.log(err)
       })
   }

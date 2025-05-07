@@ -1,9 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, ValidatorFn, ValidationErrors, AbstractControl} from '@angular/forms';
-import { LoginService } from '../services/login.service';
-import { ProjectService } from '../services/project.service';
-import { AddProject } from '../interfaces/add-project';
+import { LoginService } from '../../services/login.service';
+import { ProjectService } from '../../services/project.service';
+import { AddProject } from '../../interfaces/add-project';
 import { NgIf } from '@angular/common';
+
+
+
+
 
 @Component({
   selector: 'app-new-project',

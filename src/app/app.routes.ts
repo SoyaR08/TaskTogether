@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { NavbarComponent } from './partials/navbar/navbar.component';
 import { IndexComponent } from './index/index.component';
 import { ProfileComponent } from './profile/profile.component';
-import { UserListComponent } from './admin/user-list/user-list.component';
-import { NewProjectComponent } from './new-project/new-project.component';
+import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { ListProjectsComponent } from './projects/list-projects/list-projects.component';
+
 
 export const routes: Routes = [
     
@@ -15,7 +15,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'projects', children: [
-        {path: '', component: NewProjectComponent},
+        {path: '', component: ListProjectsComponent},
         {path: 'newproject', component: NewProjectComponent}
     ]},
     //{path: 'prueba', component: NavbarComponent},

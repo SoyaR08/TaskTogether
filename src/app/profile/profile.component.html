@@ -4,8 +4,8 @@
             <!-- <div class="profileImg" style="height: 200px; width: 200px; border-radius: 100%; background-color: aquamarine;"></div> -->
             <img src="https://res.cloudinary.com/dv5lyqil9/image/upload/v1746122440/porsche_911_aqtei9.jpg" alt=""
             style="height: 200px; width: 200px; border-radius: 100%;">
-            <h3>Nombre usuario</h3>
-            <span>correomail.com</span> | <span>Trabajo</span>
+            <h3>{{loginService.user().name}}</h3>
+            <span>{{loginService.user().email}}</span> | <span>{{loginService.user().job}}</span>
             <br>
             <button>Editar Perfil</button>
         </div>

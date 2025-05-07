@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LoginService } from '../services/login.service';
 import { EditProfileComponent } from '../partials/edit-profile/edit-profile.component';
 
@@ -11,5 +11,7 @@ import { EditProfileComponent } from '../partials/edit-profile/edit-profile.comp
 export class ProfileComponent {
 
   loginService: LoginService = inject(LoginService);
+  
+  
 
 }
