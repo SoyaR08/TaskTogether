@@ -1,14 +1,22 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { ProjectService } from '../../services/project.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-list-projects',
-  imports: [],
+  imports: [NgFor],
   templateUrl: './list-projects.component.html',
   styleUrl: './list-projects.component.css'
 })
-export class ListProjectsComponent {
+export class ListProjectsComponent implements OnInit{
 
-  login: LoginService = inject(LoginService)
+  pageNumber: number = 1;
+  login: LoginService = inject(LoginService);
+  project: ProjectService = inject(ProjectService);
+
+  ngOnInit(): void {
+    this.project.getProjects(this.pageNumber);
+  }
 
 }

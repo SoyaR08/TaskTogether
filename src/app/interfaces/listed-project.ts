@@ -1,8 +1,8 @@
-export interface AddProject {
+export interface ListedProject {
+    id: Number;
     name: string;
     description: string;
     start_date: string;
     end_date: string;
-    status: string;
-    userCreator: Number;
+    project_img: string | null;
 }

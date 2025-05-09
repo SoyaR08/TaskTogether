@@ -50,7 +50,7 @@ export class NewProjectComponent {
 
       const newProject: AddProject = {
         ...this.project.value,
-        user_creator: this.login.user().id
+        userCreator: this.login.user().id
       };
 
       this.projectService.addProject(newProject)
