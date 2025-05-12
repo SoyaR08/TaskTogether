@@ -4,7 +4,7 @@
   </header>
   <!--Lógica de los cambios en el grid simplificada-->
   <main [ngClass]="{'justAForm': routerService.isJustAForm()}">
-    <app-breadcrum></app-breadcrum>
+    <app-breadcrum *ngIf="!routerService.isJustAForm() && !routerService.isOnRoute('/dashboard')"></app-breadcrum>
     <router-outlet></router-outlet>
   </main>
   <aside *ngIf="!routerService.isOnRoute('/') && !routerService.isJustAForm()" class="inter-navbar">
