@@ -1,11 +1,3 @@
-<p>list-projects works!</p>
-
-<!-- <ul>
-    <li *ngFor="let prj of project.userProjects().content">
-        {{prj.name}}
-    </li>
-</ul> -->
-
 <div class="projectsTable">
     <div class="manageInfo"></div>
 
@@ -16,6 +8,7 @@
                 <th>Descripción</th>
                 <th>Fecha de inicio</th>
                 <th>Fecha de fin</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +18,10 @@
                 <td>{{prj.description}}</td>
                 <td>{{prj.start_date}}</td>
                 <td>{{prj.end_date}}</td>
+                <td>
+                    <button>Editar Proyecto</button>
+                    <button (click)="finish(prj.id)">Finalizar Proyecto</button>
+                </td>
             </tr>
         </tbody>
     </table>
