@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
 import { ListProjectsComponent } from './projects/list-projects/list-projects.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProjecthomeComponent } from './projecthome/projecthome.component';
 
 
 export const routes: Routes = [
@@ -18,7 +19,8 @@ export const routes: Routes = [
     {path: 'profile', component: ProfileComponent},
     {path: 'projects', children: [
         {path: '', component: ListProjectsComponent},
-        {path: 'newproject', component: NewProjectComponent, pathMatch: 'full'}
+        {path: 'newproject', component: NewProjectComponent, pathMatch: 'full'},
+        {path: ':projectName', component: ProjecthomeComponent}
     ]},
     //{path: 'prueba', component: NavbarComponent},
     {path: 'adminSection', loadChildren: () => import('./admin/adminroutes').then(m => m.routes)}, 

@@ -1,0 +1,52 @@
+.blackboard {
+    width: 1015px;
+    height: 535px;
+    background-color: white;
+    border-radius: 4px;
+    border: solid #5a5a5a 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* font-family: "Inter", sans-serif;
+font-optical-sizing: auto;
+font-weight: 0;
+font-size: 24px;
+font-style: normal; */
+.info, .members {
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info {
+    flex-direction: row;
+}
+
+.magnet {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid #333;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+
+.posit {
+    width: 170px;
+    height: 100px;
+    background-color: #F6F353;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+     /* Deja espacio para el imán */
+}
+

@@ -3,9 +3,10 @@ import { LoginService } from '../../services/login.service';
 import { ProjectService } from '../../services/project.service';
 import { NgFor } from '@angular/common';
 import Swal from 'sweetalert2';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-list-projects',
-  imports: [NgFor],
+  imports: [NgFor, RouterLink],
   templateUrl: './list-projects.component.html',
   styleUrl: './list-projects.component.css'
 })
@@ -30,5 +31,9 @@ export class ListProjectsComponent implements OnInit{
       showCancelButton: true
     })
     .then(() => this.project.finishAProject(id));
+  }
+
+  formatNames(name: string): string {
+    return name.replaceAll(" ", "-");
   }
 }
