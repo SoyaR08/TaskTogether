@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { HistorialComponent } from '../modals/historial/historial.component';
+
 
 @Component({
   selector: 'app-projecthome',
@@ -8,4 +11,12 @@ import { Component } from '@angular/core';
 })
 export class ProjecthomeComponent {
 
+  dialog: MatDialog = inject(MatDialog)
+
+
+  openHistorial() {
+    this.dialog.open(HistorialComponent, {
+      panelClass: 'custom-dialog-container'
+    })
+  }
 }

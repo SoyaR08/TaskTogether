@@ -45,5 +45,14 @@ aside {
 }
 
 
+/* styles.css (global, no en component.css) */
+.custom-dialog-container .mat-dialog-container {
+  padding: 0 !important;
+  background: none;
+  box-shadow: none;
+}
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

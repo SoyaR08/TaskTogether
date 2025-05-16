@@ -4,6 +4,7 @@ import { AddProject } from '../interfaces/add-project';
 import Swal from 'sweetalert2';
 import { Project } from '../interfaces/project';
 import { ProjectPage } from '../interfaces/project-page';
+import { Record } from '../interfaces/record';
 
 @Injectable({
   providedIn: 'root'
@@ -41,9 +42,14 @@ export class ProjectService {
   });
   private isLoading = signal<boolean>(true);
   private http: HttpClient = inject(HttpClient)
+  private historical = signal<Record[]>([])
 
   get userProjects() {
     return this.activeProjects.asReadonly();
+  }
+
+  get records() {
+    return this.historical.asReadonly();
   }
 
   getProjects(pageNumber: number) {
@@ -92,8 +98,8 @@ export class ProjectService {
       "status": "FINISHED"
     }
 
-    this.http.patch<Project>(`${this.apiUrl}/${id}`, newStatus, {headers})
-    .subscribe({
+    this.http.patch<Project>(`${this.apiUrl}/${id}`, newStatus, { headers })
+      .subscribe({
         next: response => {
           Swal.fire({
             title: '¡Proyecto finalizado con éxito!',
@@ -106,8 +112,21 @@ export class ProjectService {
         },
         error: err => alert(err)
       })
-
-
-
   }
+
+  loadHistorical(projectId: Number) {
+
+    const token: string | null = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+
+    this.http.get<Record[]>(`${this.apiUrl}/${projectId}/historical`, {headers})
+      .subscribe({
+        next: response => this.historical.set(response),
+        error: err => alert(err.message)
+      })
+  }
+
 }
