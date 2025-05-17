@@ -16,4 +16,9 @@ export class HistorialComponent implements OnInit {
     this.projects.loadHistorical(9);
   }
 
+  formatDate(dateString: string): string[] {
+    const formatedDate = dateString.split('T');
+    return formatedDate;
+  }
+
 }

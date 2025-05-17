@@ -37,7 +37,7 @@ export class LoginService {
   signin(login: Login) {
     this.http.post<{ token: string }>(`${this.baseUrl}signin`, login).subscribe({
       next: response => {
-        console.log(response.token.split('Bearer '));
+        //console.log(response.token.split('Bearer '));
         const token = response.token.split('Bearer ')[1];
         localStorage.setItem('token', token);
         this.isLogedSignal.set(true);
@@ -47,6 +47,7 @@ export class LoginService {
           icon: 'success',
           confirmButtonText: 'Aceptar'
         });
+        this.findUserByHisMail(jwtDecode<DecodedToken>(token).email);
         this.router.navigate(['/dashboard'])
       },
       error: () => {

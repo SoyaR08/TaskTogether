@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, NgForm, ReactiveFormsModule, Validators} from '@
 import { RegisterService } from '../services/register.service';
 import { Register } from '../interfaces/register';
 import { RouterLink } from '@angular/router';
+import { emailExistsValidator } from '../validators/emailvalidator';
 
 @Component({
   selector: 'app-register',
@@ -23,10 +24,11 @@ export class RegisterComponent {
   */
 
   private fb: FormBuilder = inject(FormBuilder);
+  private service: RegisterService = inject(RegisterService);
 
   registerForm: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email], [emailExistsValidator(this.service)]],
     password: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&+-._¿])[A-Za-z\d@$!%*?&+-._¿]{8,}$/)]],
     confirmPassword: ['', [Validators.required, 
       Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&+-._¿])[A-Za-z\d@$!%*?&+-._¿]{8,}$/)]],
@@ -34,7 +36,6 @@ export class RegisterComponent {
     job: ['']
   })
 
-  private service: RegisterService = inject(RegisterService);
 
   isValid(field: string): boolean {
     return this.registerForm?.controls[field].invalid && this.registerForm?.controls[field].touched;

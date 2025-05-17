@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Register } from '../interfaces/register';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +14,13 @@ export class RegisterService {
     return this.http.post("http://localhost:8080/register", register)
 
   }
+
+  checkEmailIfExists(email: string) {
+    return this.http.get<any>(`http://localhost:8080/nonauth/users/${email}`)
+    .pipe(
+      map(user => !!user),
+      catchError(() => of(false))
+    );
+  }
+
 }

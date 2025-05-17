@@ -1,7 +1,6 @@
-<div>
+<div class="modal">
     <h1>Historial</h1>
     <div>
-        <p>Este es un diálogo de Angular Material.</p>
         <table class="box">
             <thead>
                 <tr>
@@ -19,7 +18,7 @@
                     </td>
                     <td>{{r.name}}</td>
                     <td>{{r.changeDescription}}</td>
-                    <td>{{r.changeDate}}</td>
+                    <td>{{formatDate(r.changeDate)[0]}} {{formatDate(r.changeDate)[1]}}</td>
                 </tr>
             </tbody>
         </table>
@@ -27,8 +26,6 @@
             <li *ngFor="let r of projects.records()">, , </li>
         </ul> -->
     </div>
-    <div>
-        <button mat-button mat-dialog-close>Cerrar</button>
-    </div>
+
 
 </div>
