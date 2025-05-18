@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HistorialComponent } from '../modals/historial/historial.component';
 
@@ -11,6 +11,7 @@ import { HistorialComponent } from '../modals/historial/historial.component';
 })
 export class ProjecthomeComponent {
 
+  @Input() projectName: string = '';
   dialog: MatDialog = inject(MatDialog)
 
 
@@ -18,5 +19,9 @@ export class ProjecthomeComponent {
     this.dialog.open(HistorialComponent, {
       panelClass: 'custom-dialog-container'
     })
+  }
+
+  unFormatName(name: string): Number {
+    return Number.parseInt(name.split("-")[0])
   }
 }

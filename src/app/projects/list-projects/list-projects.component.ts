@@ -34,6 +34,6 @@ export class ListProjectsComponent implements OnInit{
   }
 
   formatNames(name: string): string {
-    return name.replaceAll(" ", "-");
+    return name.toLowerCase().replaceAll(" ", "-");
   }
 }
