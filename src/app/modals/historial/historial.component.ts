@@ -17,7 +17,7 @@ export class HistorialComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: { projectId: number }) {}
 
   ngOnInit(): void {
-    this.projects.loadHistorical(11);
+    this.projects.loadHistorical(this.data.projectId);
   }
 
   formatDate(dateString: string): string[] {

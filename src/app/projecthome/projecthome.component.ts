@@ -17,7 +17,12 @@ export class ProjecthomeComponent {
 
   openHistorial() {
     this.dialog.open(HistorialComponent, {
-      panelClass: 'custom-dialog-container'
+      //panelClass: 'custom-dialog-container', Esto le pasa una clase css default
+      height: '500px',
+      width: '830px',
+      data: {
+        projectId: this.unFormatName(this.projectName)
+      }
     })
   }
 

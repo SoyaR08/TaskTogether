@@ -4,6 +4,7 @@ import { LoginService } from '../../services/login.service';
 import { ProjectService } from '../../services/project.service';
 import { AddProject } from '../../interfaces/add-project';
 import { NgIf } from '@angular/common';
+import { notBeforeToday } from '../../validators/datevalidator';
 
 
 
@@ -23,7 +24,7 @@ export class NewProjectComponent {
 
   project: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
-    start_date: ['', [Validators.required]],
+    start_date: ['', [Validators.required, notBeforeToday]],
     description: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(300)]],
     end_date: ['', [Validators.required]],
     status: ['IN_PROGRESS']

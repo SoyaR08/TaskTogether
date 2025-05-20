@@ -9,14 +9,17 @@
                 <label for="name">Nombre Proyecto:</label>
                 <input type="text" formControlName="name">
                 <small *ngIf="isInvalidField('name')">Introduzca un nombre de entre 3 y 50 caracteres</small>
-                
+
             </div>
-            
+
             <div class="field inter-labelText">
                 <label for="password">Fecha Inicio:</label>
                 <input type="date" formControlName="start_date">
-                <small *ngIf="isInvalidField('start_date')">Elija una fecha válida</small>
-                <small *ngIf="project.errors?.['fechaInvalida'] && project.touched">{{ project.errors?.['fechaInvalida'] }}</small>
+                <small *ngIf="isInvalidField('start_date')">Introduzca una fecha igual o posterior al día de hoy</small>
+                <!-- <small *ngIf="project.get('fecha')?.errors?.['notBeforeToday']">
+                    La fecha no puede ser anterior a hoy.
+                </small> -->
+                <small *ngIf="project.errors?.['fechaInvalida'] && project.touched">{{ project.errors?.['fechaInvalida']}}</small>
             </div>
 
         </div>
@@ -25,9 +28,10 @@
             <div class="field inter-labelText">
                 <label for="password">Descripción:</label>
                 <textarea name="" id="" formControlName="description"></textarea>
-                <small *ngIf="isInvalidField('description')">Introduzca una breve descripción de entre 20 y 300 caracteres</small>
+                <small *ngIf="isInvalidField('description')">Introduzca una breve descripción de entre 20 y 300
+                    caracteres</small>
             </div>
-    
+
             <div class="field inter-labelText">
                 <label for="password">Fecha Fin:</label>
                 <input type="date" formControlName="end_date">
