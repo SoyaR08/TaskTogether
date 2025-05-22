@@ -40,6 +40,10 @@ font-style: normal; */
     align-items: center;
 }
 
+.members {
+    flex-direction: column;
+}
+
 .info {
     flex-direction: row;
 }

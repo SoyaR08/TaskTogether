@@ -6,17 +6,26 @@
                     <div class="magnet magnet-blue"></div>
                     <h3>Por hacer</h3>
                 </div>
+                <div class="todo">
+                    <span *ngFor="let todo of dashboardService.dashboard().pending">{{todo.name}}</span>
+                </div>
             </div>
             <div class="card2">
                 <div class="posit">
                     <div class="magnet magnet-yellow"></div>
                     <h3>En progreso</h3>
                 </div>
+                <div class="progress">
+                    <span *ngFor="let todo of dashboardService.dashboard().progress">{{todo.name}}</span>
+                </div>
             </div>
             <div class="card3">
                 <div class="posit">
                     <div class="magnet magnet-green"></div>
                     <h3>Finalizadas</h3>
+                </div>
+                <div class="finished">
+                    <span *ngFor="let todo of dashboardService.dashboard().finished">{{todo.name}}</span>
                 </div>
             </div>
         </div>
@@ -25,10 +34,13 @@
                 <div class="magnet magnet-marine"></div>
                 <h3>Miembros del equipo</h3>
             </div>
+            <div class="memberList">
+                <span *ngFor="let member of dashboardService.dashboard().members">{{member.name}}</span>
+            </div>
         </div>
     </div>
     <div class="buttons">
-        <button mat-button  (click)="openHistorial()">Historial</button>
+        <button mat-button (click)="openHistorial()">Historial</button>
         <button>Miembros</button>
     </div>
 </div>
