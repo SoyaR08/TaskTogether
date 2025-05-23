@@ -19,7 +19,8 @@
                 <!-- <small *ngIf="project.get('fecha')?.errors?.['notBeforeToday']">
                     La fecha no puede ser anterior a hoy.
                 </small> -->
-                <small *ngIf="project.errors?.['fechaInvalida'] && project.touched">{{ project.errors?.['fechaInvalida']}}</small>
+                <small *ngIf="project.errors?.['fechaInvalida'] && project.touched">{{
+                    project.errors?.['fechaInvalida']}}</small>
             </div>
 
         </div>
@@ -39,6 +40,28 @@
             </div>
 
         </div>
+
+        <div formArrayName="members">
+            @for (member of members.controls; track $index) {
+            <div>
+                <input [formControlName]="$index">
+                <button type="button">Eliminar</button>
+            </div>
+            }
+        </div>
+
+        <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Agregar</label>
+            <div class="col-sm-9">
+                <div class="input-group">
+                    <input class="form-control" placeholder="Agregar favorito" [formControl]="newMember">
+                    <button class="btn btn-outline-primary" type="button" (click)="addMember()">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+
 
 
         <div class="field centered">

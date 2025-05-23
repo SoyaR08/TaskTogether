@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, ValidatorFn, ValidationErrors, AbstractControl} from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, ValidatorFn, ValidationErrors, AbstractControl, FormArray, FormControl } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { ProjectService } from '../../services/project.service';
 import { AddProject } from '../../interfaces/add-project';
@@ -27,8 +27,18 @@ export class NewProjectComponent {
     start_date: ['', [Validators.required, notBeforeToday]],
     description: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(300)]],
     end_date: ['', [Validators.required]],
-    status: ['IN_PROGRESS']
-  }, {validators: this.fechaInicioMenorQueFin()})
+    status: ['IN_PROGRESS'],
+    members: this.fb.array([]) //array de miembros del proyecto
+  }, { validators: this.fechaInicioMenorQueFin() })
+
+  newMember: FormControl = this.fb.control('', [Validators.required]); // Control para añadir el nuevo miembro
+
+  /**
+   * Devuelve el array de miembros de proyecto para que el usuario los pueda ver
+   */
+  get members(): FormArray {
+    return this.project.get('members') as FormArray;
+  }
 
   isInvalidField(field: string) {
     return this.project.controls[field].invalid && this.project.controls[field].touched
@@ -38,12 +48,24 @@ export class NewProjectComponent {
     return (group: AbstractControl): ValidationErrors | null => {
       const start = group.get('start_date')?.value;
       const end = group.get('end_date')?.value;
-  
+
       if (start && end && new Date(start) > new Date(end)) {
         return { fechaInvalida: 'La fecha de inicio debe ser anterior a la de fin' };
       }
       return null;
     };
+  }
+
+  /**
+   * Añade un nuevo miembro al proyecto
+   */
+  addMember() {
+    if (this.newMember.valid) {
+      this.members.push(
+        this.fb.control(this.newMember.value, [Validators.required])
+      )
+      this.newMember.reset();
+    }
   }
 
   submit() {
