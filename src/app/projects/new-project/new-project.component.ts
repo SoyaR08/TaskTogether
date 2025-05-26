@@ -5,6 +5,7 @@ import { ProjectService } from '../../services/project.service';
 import { AddProject } from '../../interfaces/add-project';
 import { NgIf } from '@angular/common';
 import { notBeforeToday } from '../../validators/datevalidator';
+import { SearchUserComponent } from '../../partials/search-user/search-user.component';
 
 
 
@@ -12,7 +13,7 @@ import { notBeforeToday } from '../../validators/datevalidator';
 
 @Component({
   selector: 'app-new-project',
-  imports: [FormsModule, ReactiveFormsModule, NgIf],
+  imports: [FormsModule, ReactiveFormsModule, NgIf, SearchUserComponent],
   templateUrl: './new-project.component.html',
   styleUrl: './new-project.component.css'
 })
@@ -66,6 +67,10 @@ export class NewProjectComponent {
       )
       this.newMember.reset();
     }
+  }
+
+  deleteMember(index: number) {
+    this.members.removeAt(index);
   }
 
   submit() {

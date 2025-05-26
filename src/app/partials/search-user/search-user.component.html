@@ -1,0 +1,17 @@
+<form action="">
+    <label for="searchuser">Correo electrónico del usuario: </label>
+    <br>
+    <input [(ngModel)]="email" (input)="service.findUserByMail(email.trim())" type="text" name="searchuser" id="searchuser">
+    <div class="results" *ngIf="service.user().length">
+        <div class="user" *ngFor="let user of service.user()">
+            <section class="details">
+                <h3>{{user.name}}</h3>
+                <p>{{user.email}}</p>
+            </section>
+            <button class="submitbutton" (click)="sendUser(user)">Añadir</button>
+        </div>
+    </div>
+
+    <!-- <button (click)="service.findUserByMail(email)">Enviar</button> -->
+</form>
+{{email}}
