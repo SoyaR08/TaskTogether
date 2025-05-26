@@ -40,29 +40,20 @@
             </div>
 
         </div>
-
+        <!--Le digo el nombre del FormArray para que no se confunda-->
         <div formArrayName="members">
+            <!--recorro los controladores de mi formArray-->
             @for (member of members.controls; track $index) {
-            <div>
-                <input [formControlName]="$index">
-                <button type="button" (click)="deleteMember($index)">Eliminar</button>
+                <!--Como son objetos estos son FormGroups por lo que los tengo que identificar-->
+            <div [formGroupName]="$index">
+                <!--Y ya puedo estar normal-->
+                <input class="membername" formControlName="name">
+                <button class="memberButton" type="button" (click)="deleteMember($index)">Eliminar</button>
             </div>
             }
         </div>
 
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Agregar</label>
-            <div class="col-sm-9">
-                <div class="input-group">
-                    <input class="form-control" placeholder="Agregar favorito" [formControl]="newMember">
-                    <button class="btn btn-outline-primary" type="button" (click)="addMember()">
-                        Agregar
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <app-search-user></app-search-user>
+        <app-search-user (userSelected)="addMember2($event)"></app-search-user>
 
         <div class="field centered">
             <button class="submitbutton" type="submit">Crear proyecto</button>

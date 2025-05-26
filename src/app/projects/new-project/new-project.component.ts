@@ -6,6 +6,7 @@ import { AddProject } from '../../interfaces/add-project';
 import { NgIf } from '@angular/common';
 import { notBeforeToday } from '../../validators/datevalidator';
 import { SearchUserComponent } from '../../partials/search-user/search-user.component';
+import { UserMinimumDetails } from '../../interfaces/user-minimum-details';
 
 
 
@@ -32,7 +33,7 @@ export class NewProjectComponent {
     members: this.fb.array([]) //array de miembros del proyecto
   }, { validators: this.fechaInicioMenorQueFin() })
 
-  newMember: FormControl = this.fb.control('', [Validators.required]); // Control para añadir el nuevo miembro
+  //newMember: FormControl = this.fb.control('', [Validators.required]); // Control para añadir el nuevo miembro
 
   /**
    * Devuelve el array de miembros de proyecto para que el usuario los pueda ver
@@ -57,16 +58,35 @@ export class NewProjectComponent {
     };
   }
 
+  // /**
+  //  * Añade un nuevo miembro al proyecto
+  //  */
+  // addMember() {
+  //   if (this.newMember.valid) {
+  //     this.members.push(
+  //       this.fb.control(this.newMember.value, [Validators.required])
+  //     )
+  //     this.newMember.reset();
+  //   }
+  // }
+
   /**
-   * Añade un nuevo miembro al proyecto
+   * Tengo que pasarle un miembro y añadir un formgroup que tenga los controles como atributos el objeto
+   * @param member 
    */
-  addMember() {
-    if (this.newMember.valid) {
-      this.members.push(
-        this.fb.control(this.newMember.value, [Validators.required])
-      )
-      this.newMember.reset();
-    }
+  addMember2(member: UserMinimumDetails) {
+    this.members.push(
+      this.fb.group({
+        id: [member.id, [Validators.required]],
+        name: [member.name, [Validators.required]],
+        email: [member.email, [Validators.required, Validators.email]],
+        address: [member.address, [Validators.required]],
+        job: [member.job, [Validators.required]],
+        role: [member.role, [Validators.required]]
+      })
+    )
+
+
   }
 
   deleteMember(index: number) {

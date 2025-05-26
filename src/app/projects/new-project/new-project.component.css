@@ -130,6 +130,21 @@
     padding: 5px;
 }
 
+.membername {
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 5px
+}
+
+.memberButton {
+    background-color: var(--yellow);
+    border-radius: 5px;
+    padding: 4px 8px;
+    color: white;
+    border: none;
+    margin: 2px;
+}
+
 .field > input:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.7); /* naranja */

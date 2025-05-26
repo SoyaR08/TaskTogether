@@ -18,6 +18,8 @@ export class SearchUserComponent {
 
   sendUser(user: UserMinimumDetails) {
     this.userSelected.emit(user);
+    this.service.clearSignal();
+    this.email = '';
   }
 
 }

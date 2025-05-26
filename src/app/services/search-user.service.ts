@@ -31,6 +31,10 @@ export class SearchUserService {
       this.userSignal.set([]);
     }
   }
+
+  clearSignal() {
+    this.userSignal.set([]);
+  }
   
 
 }
