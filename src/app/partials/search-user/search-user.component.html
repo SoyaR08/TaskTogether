@@ -1,7 +1,7 @@
 <form action="">
-    <label for="searchuser">Correo electrónico del usuario: </label>
+    <label for="searchuser">Agregar miembro </label>
     <br>
-    <input [(ngModel)]="email" (input)="service.findUserByMail(email.trim())" type="text" name="searchuser" id="searchuser">
+    <input class="field" [(ngModel)]="email" (input)="service.findUserByMail(email.trim())" type="text" name="searchuser" id="searchuser" placeholder="Introduce el correo electrónico de un usuario">
     <div class="results" *ngIf="service.user().length">
         <div class="user" *ngFor="let user of service.user()">
             <section class="details">
@@ -14,4 +14,3 @@
 
     <!-- <button (click)="service.findUserByMail(email)">Enviar</button> -->
 </form>
-{{email}}

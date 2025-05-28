@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HistorialComponent } from '../modals/historial/historial.component';
 import { ProjectdashboardService } from '../services/projectdashboard.service';
 import { NgFor } from '@angular/common';
+import { AddtaskComponent } from '../modals/addtask/addtask.component';
 
 
 @Component({
@@ -31,6 +32,16 @@ export class ProjecthomeComponent implements OnInit{
     this.dialog.open(HistorialComponent, {
       //panelClass: 'custom-dialog-container', Esto le pasa una clase css default
       height: '500px',
+      width: '830px',
+      data: {
+        projectId: this.unFormatName(this.projectName)
+      }
+    })
+  }
+
+  createTask() {
+    this.dialog.open(AddtaskComponent, {
+      height: '650px',
       width: '830px',
       data: {
         projectId: this.unFormatName(this.projectName)

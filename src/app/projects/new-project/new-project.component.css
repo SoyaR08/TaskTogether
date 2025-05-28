@@ -83,9 +83,9 @@
     /* Convierte el contenedor en un flexbox para que sus hijos se alineen según flexbox */
     flex-direction: column;
     /* Hace que los hijos (header y form) se coloquen en una columna */
-    height: 460px;
+    height: 560px;
     /* Altura fija del contenedor */
-    width: 700px;
+    width: 800px;
     /* Ancho fijo del contenedor */
     background-color: white;
     /* Color de fondo */
@@ -166,6 +166,25 @@
     display: block;
 }
 
+.memberList {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 50px;
+    max-width: 100%;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 10px;
+    overflow: scroll;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.memberItem {
+    display: flex;
+    flex: 0 0 calc(20% - 8px);
+    align-items: center;
+}
 
 
 small {

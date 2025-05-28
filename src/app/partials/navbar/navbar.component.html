@@ -27,11 +27,11 @@
             alt="portapapeles" width="50" height="50">
         <a>Tareas</a>
     </div>
-    <div [ngClass]="{'selected': routerService.isOnRoute('/projects/newProject')}" [routerLink]="['/projects/newproject']">
+    <div [ngClass]="{'selected': routerService.isOnRoute('/projects/newproject')}" [routerLink]="['/projects/newproject']">
         <img [src]="['assets/add_circle.svg']" alt="portapapeles" width="50" height="50">
         <a>Nuevo Proyecto</a>
     </div>
-    <div [ngClass]="{'selected': routerService.isOnRoute('/addColaborators')}">
+    <div [ngClass]="{'selected': routerService.isOnRoute('/addColaborators')}" [routerLink]="['/addColaborators']">
         <img [src]="['assets/person_add.svg']" alt="portapapeles" width="50" height="50">
         <a>Añadir Colaborador</a>
     </div>

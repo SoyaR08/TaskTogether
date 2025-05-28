@@ -1,0 +1,49 @@
+<div class="modal">
+    <div class="taskBox">
+        <header class="inter-title formBoxHeader">
+            <h1>Crear tarea</h1>
+        </header>
+        <form method="post" class="taskForm" [formGroup]="newTaskForm" (ngSubmit)="addTask()">
+
+
+
+            <div class="field inter-labelText">
+                <label for="name">Nombre:</label>
+                <input type="text" formControlName="name">
+                <small *ngIf="isInValid('name')">Introduzca un nombre de entre 3 y 25 caracteres</small>
+
+            </div>
+
+            <div class="field inter-labelText">
+                <label for="fechalimite">Fecha límite:</label>
+                <input type="date" formControlName="limitDate">
+                <small *ngIf="isInValid('limitDate')">La fecha introducida no puede ser anterior a la fecha actual</small>
+            </div>
+
+
+            <div class="field inter-labelText">
+                <label for="fechalimite">Prioridad</label>
+                <select name="" id="" formControlName="priority">
+                    <option value="0">Baja</option>
+                    <option value="1">Media</option>
+                    <option value="2">Alta</option>
+                </select>
+
+                <small *ngIf="isInValid('priority')">Seleccione una prioridad</small>
+            </div>
+
+            <div class="field inter-labelText">
+                <label for="email">Descripción:</label>
+                <textarea name="description" id="description" formControlName="description"></textarea>
+                <small *ngIf="isInValid('description')">Introduzca una descripción de entre 20 y 300 caracteres</small>
+
+            </div>
+
+            <div class="field centered">
+                <button class="submitbutton" type="submit">Crear tarea</button>
+            </div>
+
+
+        </form>
+    </div>
+</div>
