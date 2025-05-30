@@ -20,7 +20,9 @@ export class TaskService {
     return this.http.post<{message: string}>(`${this.baseUrl}/add`, task, { headers})
     .subscribe({
       next: response => Swal.fire({
-        'title': 'Tarea añadida'
+        'title': 'Tarea añadida',
+        'icon': 'success',
+        'text': response.message
       }),
       error: error => {
         console.error('Error al añadir la tarea:', error);

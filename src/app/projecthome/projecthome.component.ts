@@ -4,11 +4,12 @@ import { HistorialComponent } from '../modals/historial/historial.component';
 import { ProjectdashboardService } from '../services/projectdashboard.service';
 import { NgFor } from '@angular/common';
 import { AddtaskComponent } from '../modals/addtask/addtask.component';
+import { TaskComponent } from '../partials/task/task.component';
 
 
 @Component({
   selector: 'app-projecthome',
-  imports: [NgFor],
+  imports: [NgFor, TaskComponent],
   templateUrl: './projecthome.component.html',
   styleUrl: './projecthome.component.css'
 })

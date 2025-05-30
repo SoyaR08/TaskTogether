@@ -1,0 +1,7 @@
+.task {
+    max-width: 250px;
+    background-color: rgb(205, 189, 189);
+    padding: 6px 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

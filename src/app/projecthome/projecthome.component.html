@@ -7,7 +7,7 @@
                     <h3>Por hacer</h3>
                 </div>
                 <div class="todo">
-                    <span *ngFor="let todo of dashboardService.dashboard().pending">{{todo.name}}</span>
+                    <app-task *ngFor="let todo of dashboardService.dashboard().pending" [task]="todo"></app-task>
                 </div>
             </div>
             <div class="card2">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="members">
+        <!-- <div class="members">
             <div class="posit">
                 <div class="magnet magnet-marine"></div>
                 <h3>Miembros del equipo</h3>
@@ -37,7 +37,7 @@
             <div class="memberList">
                 <span *ngFor="let member of dashboardService.dashboard().members">{{member.name}}</span>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="buttons">
         <button mat-button (click)="openHistorial()">Historial</button>
@@ -50,5 +50,4 @@
         </button>
     </div>
 </div>
-{{projectName}}
-{{unFormatName(projectName)}}
+
