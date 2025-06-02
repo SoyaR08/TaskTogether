@@ -1,7 +1,57 @@
 .task {
-    max-width: 250px;
-    background-color: rgb(205, 189, 189);
-    padding: 6px 8px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+  position: relative;
+  /* para que el hijo absoluto se posicione respecto a este */
+  display: flex;
+  max-width: 290px;
+  background-color: rgb(205, 189, 189);
+  padding: 6px 8px 6px 16px;
+  /* más padding-left para dejar espacio para la barra */
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.type {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+  /* bordes redondeados solo a la izquierda */
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.priority-high {
+  background-color: red;
+}
+
+.priority-mid {
+  background-color: orange;
+}
+
+.priority-low {
+  background-color: green;
+}
+
+.submitbutton {
+  background-color: #FF9F1C;
+  border-radius: 5px;
+  color: white;
+  width: calc(min-content + 5px);
+  height: calc(min-content + 5px);
+  border: none;
+  padding: 5px;
+}
+
+.submitbutton:hover {
+  transition: 0.3s;
+  background-color: hsl(35, 90%, 40%);
+  cursor: pointer;
 }

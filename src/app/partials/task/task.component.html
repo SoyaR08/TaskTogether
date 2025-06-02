@@ -1,5 +1,13 @@
 <div class="task">
-    <p>{{task.name}}</p>
-    <small>Fecha de caducidad: {{task.limitDate}}</small>
-    <button>Unirse a Tarea</button>
+    <div class="type" [ngClass]="{
+        'priority-high': task.priority === 2, 
+        'priority-mid': task.priority === 1, 
+        'priority-low': task.priority === 0
+        }"></div>
+    <div class="info">
+        <p>{{task.name}}</p>
+        <small>{{task.limitDate}}</small>
+        <button class="submitbutton" *ngIf="task.status !== 2 && !isMember()" (click)="assignATask(login.user().id, task.id)">Unirse a Tarea</button>
+        <button class="submitbutton">Ver Tarea</button>
+    </div>
 </div>

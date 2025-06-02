@@ -2,30 +2,38 @@
     <div class="blackboard">
         <div class="info">
             <div class="card1">
-                <div class="posit">
-                    <div class="magnet magnet-blue"></div>
-                    <h3>Por hacer</h3>
+                <div class="fixPosit">
+                    <div class="posit">
+                        <div class="magnet magnet-blue"></div>
+                        <h3>Por hacer</h3>
+                    </div>
                 </div>
                 <div class="todo">
                     <app-task *ngFor="let todo of dashboardService.dashboard().pending" [task]="todo"></app-task>
                 </div>
             </div>
             <div class="card2">
-                <div class="posit">
-                    <div class="magnet magnet-yellow"></div>
-                    <h3>En progreso</h3>
+                <div class="fixPosit">
+                    <div class="posit">
+                        <div class="magnet magnet-yellow"></div>
+                        <h3>En progreso</h3>
+                    </div>
                 </div>
                 <div class="progress">
-                    <span *ngFor="let todo of dashboardService.dashboard().progress">{{todo.name}}</span>
+                    <app-task *ngFor="let todo of dashboardService.dashboard().progress" [task]="todo"></app-task>
+                    <!-- <span *ngFor="let todo of dashboardService.dashboard().progress">{{todo.name}}</span> -->
                 </div>
             </div>
             <div class="card3">
-                <div class="posit">
-                    <div class="magnet magnet-green"></div>
-                    <h3>Finalizadas</h3>
+                <div class="fixPosit">
+                    <div class="posit">
+                        <div class="magnet magnet-green"></div>
+                        <h3>Finalizadas</h3>
+                    </div>
+
                 </div>
                 <div class="finished">
-                    <span *ngFor="let todo of dashboardService.dashboard().finished">{{todo.name}}</span>
+                    <app-task *ngFor="let todo of dashboardService.dashboard().finished" [task]="todo"></app-task>
                 </div>
             </div>
         </div>

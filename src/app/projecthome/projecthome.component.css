@@ -126,12 +126,21 @@ font-style: normal; */
    
 }
 
+
 .todo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start; /* o flex-start */
+    justify-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 325px; /* asegúrate de que haya altura real en el padre */
+    width: 100%;
+}
+
+.fixPosit {
+    width: 100%;
+    display: flex;
     align-items: center;
-    overflow: auto; 
-    max-height: 50%;
-    
+    justify-content: center;
 }

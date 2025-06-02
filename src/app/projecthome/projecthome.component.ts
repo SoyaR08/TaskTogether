@@ -5,6 +5,9 @@ import { ProjectdashboardService } from '../services/projectdashboard.service';
 import { NgFor } from '@angular/common';
 import { AddtaskComponent } from '../modals/addtask/addtask.component';
 import { TaskComponent } from '../partials/task/task.component';
+import { AssignTaskComponent } from '../modals/assign-task/assign-task.component';
+import { LoginService } from '../services/login.service';
+import { AssignTaskService } from '../services/assign-task.service';
 
 
 @Component({
@@ -18,6 +21,7 @@ export class ProjecthomeComponent implements OnInit{
   @Input() projectName: string = '';
   dialog: MatDialog = inject(MatDialog)
   dashboardService: ProjectdashboardService = inject(ProjectdashboardService);
+
 
   ngOnInit(): void {
       const token: string | null = localStorage.getItem('token');
@@ -42,6 +46,16 @@ export class ProjecthomeComponent implements OnInit{
 
   createTask() {
     this.dialog.open(AddtaskComponent, {
+      height: '650px',
+      width: '830px',
+      data: {
+        projectId: this.unFormatName(this.projectName)
+      }
+    })
+  }
+
+  assignTask() {
+    this.dialog.open(AssignTaskComponent, {
       height: '650px',
       width: '830px',
       data: {
