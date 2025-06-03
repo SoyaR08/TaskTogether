@@ -2,17 +2,17 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HistorialComponent } from '../modals/historial/historial.component';
 import { ProjectdashboardService } from '../services/projectdashboard.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { AddtaskComponent } from '../modals/addtask/addtask.component';
 import { TaskComponent } from '../partials/task/task.component';
 import { AssignTaskComponent } from '../modals/assign-task/assign-task.component';
 import { LoginService } from '../services/login.service';
-import { AssignTaskService } from '../services/assign-task.service';
+
 
 
 @Component({
   selector: 'app-projecthome',
-  imports: [NgFor, TaskComponent],
+  imports: [NgFor, TaskComponent, NgIf],
   templateUrl: './projecthome.component.html',
   styleUrl: './projecthome.component.css'
 })
@@ -21,7 +21,7 @@ export class ProjecthomeComponent implements OnInit{
   @Input() projectName: string = '';
   dialog: MatDialog = inject(MatDialog)
   dashboardService: ProjectdashboardService = inject(ProjectdashboardService);
-
+  login: LoginService = inject(LoginService);
 
   ngOnInit(): void {
       const token: string | null = localStorage.getItem('token');
@@ -66,5 +66,15 @@ export class ProjecthomeComponent implements OnInit{
 
   unFormatName(name: string): Number {
     return Number.parseInt(name.split("-")[0])
+  }
+
+  isProjectAdmin(): boolean {
+    let isAdmin = false;
+    this.dashboardService.dashboard().members.forEach(admin => {
+      if (admin.id === this.login.user().id && admin.projectRole === 'PROJECT_ADMIN') {
+        isAdmin = true;
+      }
+    });
+    return isAdmin;
   }
 }

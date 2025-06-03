@@ -1,9 +1,10 @@
-import { UserMinimumDetails } from "./user-minimum-details";
+import { UserMember } from "./user-member";
+
 
 export interface Dashboard {
     projectId: Number;
     name: string;
-    members: UserMinimumDetails[];
+    members: UserMember[];
     pending: any[];
     progress: any[];
     finished: any[];
