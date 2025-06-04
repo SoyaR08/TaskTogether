@@ -6,17 +6,25 @@
         <div class="field inter-labelText">
             <label for="projects">Seleccione un proyecto</label>
             <select name="projects" id="projects">
-                <option value="">Seleccione un proyecto</option>
+                <option value="0">Seleccione un proyecto</option>
+                <option *ngFor="let prj of service.projects()" [value]="prj.id">{{ prj.name }}</option>
             </select>
             <!-- <small *ngIf="isInvalidField('email')">Introduzca un email válido</small> -->
-            
+
         </div>
-        
+
+        <app-search-user (userSelected)="addMember2($event)"></app-search-user>
         <div class="field inter-labelText">
-            <label for="password">Contraseña:</label>
-            <input type="password" formControlName="password">
-            <b class="inter-small-bold">¿Has olvidado tu contraseña?</b>
-            <!-- <small *ngIf="isInvalidField('password')">Introduzca una contraseña</small> -->
+            <label for="password">Miembros:</label>
+            <div formArrayName="members" class="memberList">
+                @for (member of members.controls; track $index) {
+                <div [formGroupName]="$index" class="memberItem">
+                    <input class="membername" formControlName="name" placeholder="Nombre del miembro">
+                    <button class="memberButton" type="button" (click)="deleteMember($index)">Eliminar</button>
+                </div>
+                }
+            </div>
+
         </div>
 
         <div class="field centered">

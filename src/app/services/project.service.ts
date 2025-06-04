@@ -122,7 +122,7 @@ export class ProjectService {
       'Authorization': `Bearer ${token}`
     })
 
-    this.http.get<Record[]>(`${this.apiUrl}/${projectId}/historical`, {headers})
+    this.http.get<Record[]>(`${this.apiUrl}/historical/${projectId}`, {headers})
       .subscribe({
         next: response => this.historical.set(response),
         error: err => alert(err.message)

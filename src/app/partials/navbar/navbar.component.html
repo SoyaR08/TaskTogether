@@ -28,11 +28,11 @@
         <a>Tareas</a>
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/projects/newproject')}" [routerLink]="['/projects/newproject']">
-        <img [src]="['assets/add_circle.svg']" alt="portapapeles" width="50" height="50">
+        <img [src]="!routerService.isOnRoute('/projects/newproject') ? ['assets/add_circle.svg'] : ['assets/add_circle_filled.svg']" alt="portapapeles" width="50" height="50">
         <a>Nuevo Proyecto</a>
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/addColaborators')}" [routerLink]="['/addColaborators']">
-        <img [src]="['assets/person_add.svg']" alt="portapapeles" width="50" height="50">
+        <img [src]="!routerService.isOnRoute('/addColaborators') ? ['assets/person_add.svg'] : ['assets/person_add_filled.svg']" alt="portapapeles" width="50" height="50">
         <a>Añadir Colaborador</a>
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/settings')}">

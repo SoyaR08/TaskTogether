@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { AddTask } from '../interfaces/add-task';
-import Swal from 'sweetalert2';
+
+import { Task } from '../interfaces/task';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,25 +12,19 @@ export class TaskService {
 
   private http: HttpClient = inject(HttpClient);
   private baseUrl: string = 'http://localhost:8080/tasks';
+  private taskAddedSubject = new Subject<Task>();
 
-  addTask(task: AddTask) {
+  get taskAdded$() {
+    return this.taskAddedSubject.asObservable();
+  }
+
+  addTask(task: AddTask): Observable<Task> {
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     })
 
-    return this.http.post<{message: string}>(`${this.baseUrl}/add`, task, { headers})
-    .subscribe({
-      next: response => Swal.fire({
-        'title': 'Tarea añadida',
-        'icon': 'success',
-        'text': response.message
-      }),
-      error: error => {
-        console.error('Error al añadir la tarea:', error);
-        alert('Error al añadir la tarea. Por favor, inténtelo de nuevo más tarde. '+error.message);
-      }
-    })
+    return this.http.post<Task>(`${this.baseUrl}`, task, { headers});
 
   }
 }

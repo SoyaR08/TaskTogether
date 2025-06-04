@@ -14,7 +14,7 @@ export class LoginService {
 
   private baseUrl = 'http://localhost:8080/';
   private isLogedSignal = signal<boolean>(false);
-  private userDetails = signal<UserMinimumDetails>({ id: 0, name: '', email: '', role: '', address: '', job: '' });
+  userDetails = signal<UserMinimumDetails>({ id: 0, name: '', email: '', role: '', address: '', job: '' });
   private router: Router = inject(Router)
 
   constructor(private http: HttpClient) {

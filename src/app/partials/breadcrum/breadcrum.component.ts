@@ -23,7 +23,8 @@ export class BreadcrumComponent {
       "profile": "Perfil",
       "adminSection": "Vista de Administrador",
       "list": "Listado de Usuarios",
-      "newproject": "Crear nuevo proyecto"
+      "newproject": "Crear nuevo proyecto",
+      "addColaborators": "Añadir Colaborador"
     };
 
     const formatedPath: Breadcrumb[] = noSlashedPath.map(
