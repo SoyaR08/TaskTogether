@@ -1,4 +1,4 @@
-import { UserMember } from "./user-member";
+import { UserMember } from "./user/user-member";
 
 
 export interface Dashboard {

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import Swal from 'sweetalert2';
 import { NewMember } from '../interfaces/new-member';
-import { error } from 'console';
+import { UserMember } from '../interfaces/user/user-member';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,15 @@ export class MemberService {
 
   private baseUrl: string = 'http://localhost:8080/members';
   private projectsSignal = signal<{id: Number, name: string}[]>([]);
+  private membersSignal = signal<UserMember[]>([]);
   constructor(private http: HttpClient) { }
 
   get projects() {
     return this.projectsSignal.asReadonly();
+  }
+
+  get members() {
+    return this.membersSignal.asReadonly();
   }
 
   getProjectsByMemberId(id: Number) {
@@ -35,6 +40,25 @@ export class MemberService {
         'icon': 'error'
       })
     })
+  }
+
+  getMembersByProjectId(projectId: Number) {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+
+    this.http.get<UserMember[]>(`${this.baseUrl}/listmembers?projectId=${projectId}`, {headers})
+    .subscribe({
+      next: response => this.membersSignal.set(response),
+      error: error => Swal.fire({
+        'title': 'Error',
+        'text': 'Error al obtener los miembros del proyecto: ' + error.message,
+        'icon': 'error'
+      })
+    })
+
   }
 
   addMemberProject(member: NewMember): void {

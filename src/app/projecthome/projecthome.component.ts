@@ -7,6 +7,7 @@ import { AddtaskComponent } from '../modals/addtask/addtask.component';
 import { TaskComponent } from '../partials/task/task.component';
 import { AssignTaskComponent } from '../modals/assign-task/assign-task.component';
 import { LoginService } from '../services/login.service';
+import { ListMembersComponent } from '../modals/list-members/list-members.component';
 
 
 
@@ -46,6 +47,18 @@ export class ProjecthomeComponent implements OnInit{
     })
   }
 
+  openMembers() {
+    this.dialog.open(ListMembersComponent, {
+      //panelClass: 'custom-dialog-container', Esto le pasa una clase css default
+      height: '500px',
+      width: '830px',
+      data: {
+        //projectId: this.unFormatName(this.projectName)
+        projectId: this.projectId
+      }
+    })
+  }
+
   createTask() {
     this.dialog.open(AddtaskComponent, {
       height: '650px',
@@ -59,8 +72,8 @@ export class ProjecthomeComponent implements OnInit{
 
   assignTask() {
     this.dialog.open(AssignTaskComponent, {
-      height: '650px',
-      width: '830px',
+      height: '450px',
+      width: '630px',
       data: {
         //projectId: this.unFormatName(this.projectName)
         projectId: this.projectId

@@ -52,7 +52,16 @@ aside {
   box-shadow: none;
 }
 
-
+/*Clase de los modales del proyecto*/
+.modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
