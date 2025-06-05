@@ -58,17 +58,7 @@ export class NewProjectComponent {
     };
   }
 
-  // /**
-  //  * Añade un nuevo miembro al proyecto
-  //  */
-  // addMember() {
-  //   if (this.newMember.valid) {
-  //     this.members.push(
-  //       this.fb.control(this.newMember.value, [Validators.required])
-  //     )
-  //     this.newMember.reset();
-  //   }
-  // }
+
 
   /**
    * Tengo que pasarle un miembro y añadir un formgroup que tenga los controles como atributos el objeto
@@ -103,6 +93,7 @@ export class NewProjectComponent {
 
       this.projectService.addProject(newProject)
       this.project.reset();
+      (this.project.get('members') as FormArray).clear();
     } else {
       this.project.markAllAsTouched();
     }

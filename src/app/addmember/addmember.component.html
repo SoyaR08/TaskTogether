@@ -2,14 +2,13 @@
     <header class="inter-title formBoxHeader">
         <h1>Añadir miembros a proyecto</h1>
     </header>
-    <form method="post" class="newmemberForm" [formGroup]="newmemberForm">
+    <form method="post" class="newmemberForm" [formGroup]="newmemberForm" (ngSubmit)="submit()">
         <div class="field inter-labelText">
             <label for="projects">Seleccione un proyecto</label>
-            <select name="projects" id="projects">
-                <option value="0">Seleccione un proyecto</option>
+            <select name="projects" id="projects" formControlName="projectId">
                 <option *ngFor="let prj of service.projects()" [value]="prj.id">{{ prj.name }}</option>
             </select>
-            <!-- <small *ngIf="isInvalidField('email')">Introduzca un email válido</small> -->
+            <small *ngIf="isInvalidField()">Elija un proyecto</small>
 
         </div>
 

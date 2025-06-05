@@ -23,7 +23,8 @@ export const routes: Routes = [
     {path: 'projects', children: [
         {path: '', component: ListProjectsComponent},
         {path: 'newproject', component: NewProjectComponent, pathMatch: 'full'},
-        {path: ':projectName', component: ProjecthomeComponent}
+        {path: 'projectView', component: ProjecthomeComponent},
+        //{path: ':projectName', component: ProjecthomeComponent}
     ]},
     
     {path: 'addColaborators', component: AddmemberComponent},

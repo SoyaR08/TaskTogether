@@ -14,7 +14,7 @@
         <tbody>
             <tr class="tableBody" *ngFor="let prj of project.userProjects().content">
                 <td>IMG</td>
-                <td [routerLink]="[`/projects/${prj.id}-${formatNames(prj.name)}`]">{{prj.name}}</td>
+                <td [routerLink]="[`/projects/projectView`]" [queryParams]="{'projectId': prj.id}">{{prj.name}}</td>
                 <td>{{prj.description}}</td>
                 <td>{{prj.start_date}}</td>
                 <td>{{prj.end_date}}</td>

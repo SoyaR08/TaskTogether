@@ -23,14 +23,19 @@ export class ProjectdashboardService {
     return this.projectDashboard.asReadonly();
   }
 
+  /**
+   * Función que añade una nueva tarea al dashboard del proyecto
+   * @param task La tarea que acabamos de añadir
+   */
   setDashboard(task: Task): void {
-    // Implement the logic to update the dashboard with the new task
+   
+    //Hago un switch por el estado para añadir a una lista u otra y una vez hecho, ordeno por prioridad
     switch (task.status) {
       case 0:
         this.projectDashboard.update(tasks => {
           return {
             ...tasks,
-            pending: [...tasks.pending, task]
+            pending: [...tasks.pending, task].sort((a, b) => b.priority - a.priority)
           }
         })
         break;
@@ -38,7 +43,7 @@ export class ProjectdashboardService {
         this.projectDashboard.update(tasks => {
           return {
             ...tasks,
-            progress: [...tasks.progress, task]
+            progress: [...tasks.progress, task].sort((a, b) => b.priority - a.priority)
           }
         })
         break;
@@ -46,7 +51,7 @@ export class ProjectdashboardService {
         this.projectDashboard.update(tasks => {
           return {
             ...tasks,
-            finished: [...tasks.finished, task]
+            finished: [...tasks.finished, task].sort((a, b) => b.priority - a.priority)
           }
         })
         break;

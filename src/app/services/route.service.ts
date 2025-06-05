@@ -1,5 +1,5 @@
 import { Injectable, OnChanges, signal, Signal, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,6 @@ export class RouteService {
   private currentRoute = signal<string>('');
   constructor(private router: Router) {
     this.currentRoute.set(this.router.url);
-
     // Suscribirse a los cambios de la ruta
     this.router.events.subscribe(() => {
       this.currentRoute.set(this.router.url);

@@ -18,7 +18,7 @@ import { LoginService } from '../services/login.service';
 })
 export class ProjecthomeComponent implements OnInit{
 
-  @Input() projectName: string = '';
+  @Input() projectId!: number;;
   dialog: MatDialog = inject(MatDialog)
   dashboardService: ProjectdashboardService = inject(ProjectdashboardService);
   login: LoginService = inject(LoginService);
@@ -26,7 +26,8 @@ export class ProjecthomeComponent implements OnInit{
   ngOnInit(): void {
       const token: string | null = localStorage.getItem('token');
       if (token) {
-        this.dashboardService.getDashboard(this.unFormatName(this.projectName), token);
+        //this.dashboardService.getDashboard(this.unFormatName(this.projectName), token);
+        this.dashboardService.getDashboard(this.projectId, token);
       } else {
         alert('No se ha encontrado el token de autenticación');
       }
@@ -39,7 +40,8 @@ export class ProjecthomeComponent implements OnInit{
       height: '500px',
       width: '830px',
       data: {
-        projectId: this.unFormatName(this.projectName)
+        //projectId: this.unFormatName(this.projectName)
+        projectId: this.projectId
       }
     })
   }
@@ -49,7 +51,8 @@ export class ProjecthomeComponent implements OnInit{
       height: '650px',
       width: '830px',
       data: {
-        projectId: this.unFormatName(this.projectName)
+        //projectId: this.unFormatName(this.projectName)
+        projectId: this.projectId
       }
     })
   }
@@ -59,7 +62,8 @@ export class ProjecthomeComponent implements OnInit{
       height: '650px',
       width: '830px',
       data: {
-        projectId: this.unFormatName(this.projectName)
+        //projectId: this.unFormatName(this.projectName)
+        projectId: this.projectId
       }
     })
   }
