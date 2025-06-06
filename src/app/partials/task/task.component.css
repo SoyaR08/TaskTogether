@@ -2,7 +2,7 @@
   position: relative;
   /* para que el hijo absoluto se posicione respecto a este */
   display: flex;
-  max-width: 290px;
+  max-width: 300px;
   background-color: rgb(205, 189, 189);
   padding: 6px 8px 6px 16px;
   /* más padding-left para dejar espacio para la barra */
@@ -48,6 +48,20 @@
   height: calc(min-content + 5px);
   border: none;
   padding: 5px;
+}
+
+.modalbutton {
+  background-color: var(--darkblue);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border: none;
+}
+
+.modalbutton:hover {
+  background-color: var(--darkbluehover);
 }
 
 .submitbutton:hover {

@@ -9,7 +9,7 @@
 
             <div class="field inter-labelText">
                 <label for="task">Tarea:</label>
-               <select name="task" id="task">
+               <select name="task" id="task" formControlName="task">
                 <option *ngFor="let t of taskService.activeTasks()" [value]="t.id">{{t.name}}</option>
                </select>
                 <!-- <small *ngIf="isInValid('name')">Introduzca un nombre de entre 3 y 140 caracteres</small> -->
@@ -18,7 +18,7 @@
 
             <div class="field inter-labelText">
                 <label for="fechalimite">Miembro:</label>
-               <select name="member" id="member">
+               <select name="member" id="member" formControlName="user">
                 <option *ngFor="let m of memberService.members()" [value]="m.id">{{m.name}}</option>
                </select>
                 <!-- <small *ngIf="isInValid('limitDate')">La fecha introducida no puede ser anterior a la fecha actual</small> -->

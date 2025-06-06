@@ -37,8 +37,12 @@ export class AssignTaskComponent implements OnInit {
   }
 
   submit() {
+
     if (this.assignTaskForm.valid) {
-      alert("Arriba España")
+      const {taskId, userId} = {taskId: this.assignTaskForm.value.task, userId: this.assignTaskForm.value.user};
+
+      this.assignService.assignTask(userId, taskId);
+
     } else {
       this.assignTaskForm.markAllAsTouched();
     }

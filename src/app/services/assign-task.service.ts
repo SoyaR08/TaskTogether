@@ -18,10 +18,11 @@ export class AssignTaskService {
       alert('No se ha encontrado el token de autenticación');
       return;
     }
-
+    const assignment = { 'userId': userId, 'taskId': taskId };
+    alert(JSON.stringify(assignment));
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
 
-    return this.http.post<{ message: string }>(`${this.baseUrl}`, { userId, taskId }, { headers })
+    return this.http.post<{ message: string }>(`${this.baseUrl}`, assignment, { headers })
       .subscribe({
         next: response => {
           Swal.fire({

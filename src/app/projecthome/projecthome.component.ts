@@ -8,18 +8,22 @@ import { TaskComponent } from '../partials/task/task.component';
 import { AssignTaskComponent } from '../modals/assign-task/assign-task.component';
 import { LoginService } from '../services/login.service';
 import { ListMembersComponent } from '../modals/list-members/list-members.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
+/**
+ *  
+ */
 
 @Component({
   selector: 'app-projecthome',
-  imports: [NgFor, TaskComponent, NgIf],
+  imports: [NgFor, TaskComponent, NgIf, MatTooltipModule],
   templateUrl: './projecthome.component.html',
   styleUrl: './projecthome.component.css'
 })
 export class ProjecthomeComponent implements OnInit{
 
-  @Input() projectId!: number;;
+  @Input() projectId!: number;
   dialog: MatDialog = inject(MatDialog)
   dashboardService: ProjectdashboardService = inject(ProjectdashboardService);
   login: LoginService = inject(LoginService);
