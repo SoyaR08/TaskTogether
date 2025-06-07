@@ -12,9 +12,48 @@
     height: 75%;
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
 }
+
+.commentImg {
+    border-radius: 100%;
+}
+
+.message {
+    margin-left: auto;
+    margin-right: 2px;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-flow: row-reverse;
+    gap: 3px;
+}
+
+.ownerInfo {
+    justify-content: flex-end;
+    flex-flow: row;
+}
+
+.userComment {
+    padding: 5px;
+    border-radius: 15px;
+    background-color: lightgrey;
+}
+
+.commentOwner {
+    background-color: rgb(137, 208, 211);
+    margin-left: auto;
+    text-align: right;
+}
+
+
 
 .sendComment {
     height: 25%;
@@ -22,6 +61,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* border-top: 3px solid black; */
 }
 
 .commentsform {
@@ -37,4 +77,3 @@
     border: 2px solid black;
     background-color: rgb(235, 235, 235);
 }
-
