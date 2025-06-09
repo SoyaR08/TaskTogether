@@ -6,10 +6,11 @@ import { AssignTaskService } from '../../services/assign-task.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CommentsComponent } from '../../modals/comments/comments.component';
+import { CdkDragDrop, DragDropModule, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task',
-  imports: [NgClass, NgIf, MatTooltipModule],
+  imports: [NgClass, NgIf, MatTooltipModule, DragDropModule],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })

@@ -8,8 +8,9 @@
                         <h3>Por hacer</h3>
                     </div>
                 </div>
-                <div class="todo">
-                    <app-task *ngFor="let todo of dashboardService.dashboard().pending" [task]="todo"></app-task>
+                <div class="todo" id="pendingList" cdkDropList [cdkDropListData]="dashboardService.dashboard().pending"
+                [cdkDropListConnectedTo]="['progressList', 'finishedList']" (cdkDropListDropped)="drop($event, 'pending')">
+                    <app-task *ngFor="let todo of dashboardService.dashboard().pending" [task]="todo" cdkDrag></app-task>
                 </div>
             </div>
             <div class="card2">
@@ -19,8 +20,9 @@
                         <h3>En progreso</h3>
                     </div>
                 </div>
-                <div class="progress">
-                    <app-task *ngFor="let todo of dashboardService.dashboard().progress" [task]="todo"></app-task>
+                <div class="progress" id="progressList" cdkDropList [cdkDropListData]="dashboardService.dashboard().progress"
+                [cdkDropListConnectedTo]="['pendingList', 'progressList']" [cdkDropListConnectedTo]="['pendingList', 'finishedList']" (cdkDropListDropped)="drop($event, 'progress')">
+                    <app-task *ngFor="let todo of dashboardService.dashboard().progress" [task]="todo" cdkDrag></app-task>
                     <!-- <span *ngFor="let todo of dashboardService.dashboard().progress">{{todo.name}}</span> -->
                 </div>
             </div>
@@ -32,8 +34,9 @@
                     </div>
 
                 </div>
-                <div class="finished">
-                    <app-task *ngFor="let todo of dashboardService.dashboard().finished" [task]="todo"></app-task>
+                <div class="finished" id="finishedList" cdkDropList [cdkDropListData]="dashboardService.dashboard().finished" 
+                [cdkDropListConnectedTo]="['pendingList', 'progressList']" (cdkDropListDropped)="drop($event, 'finished')">
+                    <app-task *ngFor="let todo of dashboardService.dashboard().finished" [task]="todo" cdkDrag></app-task>
                 </div>
             </div>
         </div>

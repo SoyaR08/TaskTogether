@@ -9,7 +9,7 @@ import { AssignTaskComponent } from '../modals/assign-task/assign-task.component
 import { LoginService } from '../services/login.service';
 import { ListMembersComponent } from '../modals/list-members/list-members.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { CdkDragDrop, DragDropModule, transferArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 
 /**
  *  
@@ -17,11 +17,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-projecthome',
-  imports: [NgFor, TaskComponent, NgIf, MatTooltipModule],
+  imports: [NgFor, TaskComponent, NgIf, MatTooltipModule, DragDropModule],
   templateUrl: './projecthome.component.html',
   styleUrl: './projecthome.component.css'
 })
-export class ProjecthomeComponent implements OnInit{
+export class ProjecthomeComponent implements OnInit {
 
   @Input() projectId!: number;
   dialog: MatDialog = inject(MatDialog)
@@ -29,13 +29,13 @@ export class ProjecthomeComponent implements OnInit{
   login: LoginService = inject(LoginService);
 
   ngOnInit(): void {
-      const token: string | null = localStorage.getItem('token');
-      if (token) {
-        //this.dashboardService.getDashboard(this.unFormatName(this.projectName), token);
-        this.dashboardService.getDashboard(this.projectId, token);
-      } else {
-        alert('No se ha encontrado el token de autenticación');
-      }
+    const token: string | null = localStorage.getItem('token');
+    if (token) {
+      //this.dashboardService.getDashboard(this.unFormatName(this.projectName), token);
+      this.dashboardService.getDashboard(this.projectId, token);
+    } else {
+      alert('No se ha encontrado el token de autenticación');
+    }
   }
 
 
@@ -97,5 +97,23 @@ export class ProjecthomeComponent implements OnInit{
       }
     });
     return isAdmin;
+  }
+
+  drop(event: CdkDragDrop<any[]>, targetList: 'pending' | 'progress' | 'finished') {
+    const dashboard = this.dashboardService.dashboard();
+
+    const sourceList = event.previousContainer.data;
+    const targetListRef = dashboard[targetList];
+    console.log(targetListRef);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(targetListRef, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        sourceList,
+        targetListRef,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }
