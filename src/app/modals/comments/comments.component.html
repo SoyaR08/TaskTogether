@@ -14,9 +14,15 @@
             </div>
         </div>
         <div class="sendComment">
-            <form class="commentsform">
-                <input class="sender" type="text" name="commentsform" id="commentsform" placeholder="Introduce un texto para enviar un comentario">
+            <form class="commentsform" [formGroup]="commentForm" (ngSubmit)="submit()">
+                <div class="input">
+                    <input class="sender" type="text" name="commentsform" id="commentsform" placeholder="Introduce un texto para enviar un comentario" formControlName="content">
+                    <button class="sendButton" type="submit">Enviar</button>
+                </div>
+                <small *ngIf="isInvalidField('content')">Introduzca un comentario de al menos 15 carácteres</small>
             </form>
+            {{commentData.taskId}}
+            {{commentData.date}}
         </div>
     </div>
 </div>
