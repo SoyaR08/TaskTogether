@@ -54,7 +54,15 @@ export class TaskService {
 
   }
 
-  changeTaskStatus(taskId: Number) {
+  changeTaskStatus(taskId: Number, status: number) {
     const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+
+    return this.http.patch(`${this.baseUrl}/${taskId}`, {id: taskId, status: status}, {headers});
+
+
   }
 }

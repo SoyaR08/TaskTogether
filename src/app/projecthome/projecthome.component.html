@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="progress">
-                    <app-task *ngFor="let todo of dashboardService.dashboard().progress" [task]="todo" cdkDrag></app-task>
+                    <app-task *ngFor="let todo of dashboardService.dashboard().progress" [task]="todo" cdkDrag [cdkDragData]="todo"></app-task>
                     <!-- <span *ngFor="let todo of dashboardService.dashboard().progress">{{todo.name}}</span> -->
                 </div>
             </div>
@@ -38,7 +38,7 @@
 
                 </div>
                 <div class="finished">
-                    <app-task *ngFor="let todo of dashboardService.dashboard().finished" [task]="todo" cdkDrag></app-task>
+                    <app-task *ngFor="let todo of dashboardService.dashboard().finished" [task]="todo" cdkDrag [cdkDragData]="todo"></app-task>
                 </div>
             </div>
         </div>

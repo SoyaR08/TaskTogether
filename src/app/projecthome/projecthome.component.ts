@@ -10,7 +10,8 @@ import { LoginService } from '../services/login.service';
 import { ListMembersComponent } from '../modals/list-members/list-members.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CdkDragDrop, DragDropModule, transferArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
-
+import { TaskService } from '../services/task.service';
+import Swal from 'sweetalert2';
 /**
  *  
  */
@@ -27,6 +28,7 @@ export class ProjecthomeComponent implements OnInit {
   dialog: MatDialog = inject(MatDialog)
   dashboardService: ProjectdashboardService = inject(ProjectdashboardService);
   login: LoginService = inject(LoginService);
+  private taskService: TaskService = inject(TaskService);
 
   ngOnInit(): void {
     const token: string | null = localStorage.getItem('token');
@@ -103,17 +105,28 @@ export class ProjecthomeComponent implements OnInit {
     const dashboard = this.dashboardService.dashboard();
 
     const sourceList = event.previousContainer.data;
-    const targetListRef = dashboard[targetList];
+    const targetListRef: any[] = dashboard[targetList];
+    const targetListStatus: number = targetListRef[0].status;
+    console.log(event.container.data)
     console.log(event.item.data);
     if (event.previousContainer === event.container) {
       moveItemInArray(targetListRef, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(
-        sourceList,
-        targetListRef,
-        event.previousIndex,
-        event.currentIndex
-      );
+      this.taskService.changeTaskStatus(event.item.data.id, targetListStatus).subscribe({
+        next: () => {
+          transferArrayItem(
+            sourceList,
+            targetListRef,
+            event.previousIndex,
+            event.currentIndex
+          );
+          Swal.fire({
+            'title': 'Éxito',
+            'icon': 'success',
+            'text': 'Estado actualizado'
+          })
+        }, error: err => console.log(err)
+      });
     }
   }
 }
