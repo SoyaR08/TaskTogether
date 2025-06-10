@@ -26,12 +26,13 @@
         </tbody>
     </table>
     <div class="pagination">
-        <button (click)="changePage(1)">Primera Página</button>
+        <button (click)="changePage(1)"><<</button>
+        <button (click)="changePage(pageNumber - 1)"><</button>
         <button [ngClass]="{'actualPage': pageNumber === pg}" *ngFor="let pg of project.userProjects().totalPages | range" (click)="changePage(pg)">
             {{ pg }}
         </button>
         
-        <button (click)="changePage(project.userProjects().totalPages)">Última Página</button>
+        <button (click)="changePage(project.userProjects().totalPages)">>></button>
 
     </div>
 </div>

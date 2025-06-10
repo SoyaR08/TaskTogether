@@ -1,32 +1,35 @@
 <div class="home">
     <div class="blackboard">
         <div class="info">
-            <div class="card1">
+            <!--Todo eso del drag & drop tiene que estar aquí para volver a poner las tareas en caso de que esté vacío-->
+            <div class="card1" id="pendingList" cdkDropList [cdkDropListData]="dashboardService.dashboard().pending"
+                [cdkDropListConnectedTo]="['progressList', 'finishedList']" (cdkDropListDropped)="drop($event, 'pending')">
                 <div class="fixPosit">
                     <div class="posit">
                         <div class="magnet magnet-blue"></div>
                         <h3>Por hacer</h3>
                     </div>
                 </div>
-                <div class="todo" id="pendingList" cdkDropList [cdkDropListData]="dashboardService.dashboard().pending"
-                [cdkDropListConnectedTo]="['progressList', 'finishedList']" (cdkDropListDropped)="drop($event, 'pending')">
-                    <app-task *ngFor="let todo of dashboardService.dashboard().pending" [task]="todo" cdkDrag></app-task>
+                <div class="todo">
+                    <app-task *ngFor="let todo of dashboardService.dashboard().pending" [task]="todo" cdkDrag [cdkDragData]="todo"></app-task>
+                    <!--Próximamente documentaré el que hace todo esto para entenderlo yo-->
                 </div>
             </div>
-            <div class="card2">
+            <div class="card2" id="progressList" cdkDropList [cdkDropListData]="dashboardService.dashboard().progress"
+                [cdkDropListConnectedTo]="['pendingList', 'progressList']" [cdkDropListConnectedTo]="['pendingList', 'finishedList']" (cdkDropListDropped)="drop($event, 'progress')">
                 <div class="fixPosit">
                     <div class="posit">
                         <div class="magnet magnet-yellow"></div>
                         <h3>En progreso</h3>
                     </div>
                 </div>
-                <div class="progress" id="progressList" cdkDropList [cdkDropListData]="dashboardService.dashboard().progress"
-                [cdkDropListConnectedTo]="['pendingList', 'progressList']" [cdkDropListConnectedTo]="['pendingList', 'finishedList']" (cdkDropListDropped)="drop($event, 'progress')">
+                <div class="progress">
                     <app-task *ngFor="let todo of dashboardService.dashboard().progress" [task]="todo" cdkDrag></app-task>
                     <!-- <span *ngFor="let todo of dashboardService.dashboard().progress">{{todo.name}}</span> -->
                 </div>
             </div>
-            <div class="card3">
+            <div class="card3" id="finishedList" cdkDropList [cdkDropListData]="dashboardService.dashboard().finished" 
+                [cdkDropListConnectedTo]="['pendingList', 'progressList']" (cdkDropListDropped)="drop($event, 'finished')">
                 <div class="fixPosit">
                     <div class="posit">
                         <div class="magnet magnet-green"></div>
@@ -34,8 +37,7 @@
                     </div>
 
                 </div>
-                <div class="finished" id="finishedList" cdkDropList [cdkDropListData]="dashboardService.dashboard().finished" 
-                [cdkDropListConnectedTo]="['pendingList', 'progressList']" (cdkDropListDropped)="drop($event, 'finished')">
+                <div class="finished">
                     <app-task *ngFor="let todo of dashboardService.dashboard().finished" [task]="todo" cdkDrag></app-task>
                 </div>
             </div>

@@ -53,4 +53,8 @@ export class TaskService {
     return this.http.post<Task>(`${this.baseUrl}`, task, { headers});
 
   }
+
+  changeTaskStatus(taskId: Number) {
+    const token = localStorage.getItem('token');
+  }
 }

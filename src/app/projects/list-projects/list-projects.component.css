@@ -13,9 +13,12 @@ label {
 
 .projectsTable {
     background-color: #f9f9f9;
+    max-height: 90vh;
     padding: 10px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    margin: 5px;
 }
 
 table {
@@ -208,5 +211,11 @@ tr {
     100% {
         transform: translateX(0px);
         width: 16px;
+    }
+}
+
+@media (max-width: 1170px) {
+    .projectsTable {
+        max-height: calc(90vh - 150px);
     }
 }

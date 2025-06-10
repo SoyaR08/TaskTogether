@@ -104,7 +104,7 @@ export class ProjecthomeComponent implements OnInit {
 
     const sourceList = event.previousContainer.data;
     const targetListRef = dashboard[targetList];
-    console.log(targetListRef);
+    console.log(event.item.data);
     if (event.previousContainer === event.container) {
       moveItemInArray(targetListRef, event.previousIndex, event.currentIndex);
     } else {
