@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -10,10 +10,29 @@ export class AssignTaskService {
   private http: HttpClient = inject(HttpClient);
   private baseUrl: string = 'http://localhost:8080/assigntask';
   private userTasks = signal<any[]>([]);
+  private filterSignal = signal<number>(3);
 
   get tasks() {
     return this.userTasks.asReadonly();
   }
+
+  setFilter(priority: number) {
+    this.filterSignal.set(priority);
+  }
+
+  filteredData(filterCondition?: number) {
+    switch (filterCondition) {
+      case 0:
+        return this.userTasks().filter(t => t.priority === 0);
+      case 1:
+        return this.userTasks().filter(t => t.priority === 1);
+      case 2:
+        return this.userTasks().filter(t => t.priority === 2);
+      default:
+        return this.userTasks();
+    }
+  }
+
 
   getUserTasks() {
     const token: string | null = localStorage.getItem('token');
@@ -26,10 +45,10 @@ export class AssignTaskService {
       'Authorization': `Bearer ${token}`
     })
 
-    this.http.get<any[]>(`${this.baseUrl}`, {headers})
-    .subscribe({
-      next: response => this.userTasks.set(response),
-      error: error => {
+    this.http.get<any[]>(`${this.baseUrl}`, { headers })
+      .subscribe({
+        next: response => this.userTasks.set(response),
+        error: error => {
           console.log(error)
           Swal.fire({
             'title': 'Error',

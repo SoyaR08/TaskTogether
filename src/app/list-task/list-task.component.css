@@ -2,12 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 3%;
+    gap: 10%;
+}
+
+.clipboardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     flex-direction: column;
     text-align: center;
-    margin-top: 3%;
 }
-
 
 .clipboard {
     width: 30vw;
@@ -50,4 +56,13 @@
 .tasks {
     overflow-y: scroll;
     height: fit-content;
+}
+
+.taskFinder {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 5px;
 }

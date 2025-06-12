@@ -1,12 +1,30 @@
 <div class="listTasks">
-    <div class="clipboardheader"></div>
-    <div class="clipboard">
-        <div class="title">
-            <h1>Tareas pendientes</h1>
-        </div>
-        <div class="tasks">
-            <app-task *ngFor="let task of service.tasks()" [task]="task"></app-task>
+    <div class="clipboardContainer">
+        <div class="clipboardheader"></div>
+        <div class="clipboard">
+            <div class="title">
+                <h1>Tareas pendientes</h1>
+            </div>
+            <div class="tasks">
+                <app-task *ngFor="let task of service.filteredData()" [task]="task"></app-task>
+            </div>
         </div>
     </div>
+    <div class="taskFinder">
+        <div class="finder">
+            <label for="taskFinder">Buscar Tarea</label>
+            <input type="text" placeholder="Introduce el nombre de una tarea">
 
+        </div>
+        <div class="filter">
+            <label for="taskFilter">Filtrar por prioridad</label>
+            <select name="taskFilter" id="taskFilter" [(ngModel)]="filter" (change)="filterTasks()">
+                <option value="3" selected>Sin filtro</option>
+                <option value="0">Baja</option>
+                <option value="1">Media</option>
+                <option value="2">Alta</option>
+            </select>
+            {{filter}}
+        </div>
+    </div>
 </div>

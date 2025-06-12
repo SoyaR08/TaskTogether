@@ -1,19 +1,27 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TaskComponent } from '../partials/task/task.component';
 import { NgFor } from '@angular/common';
 import { AssignTaskService } from '../services/assign-task.service';
+import { FormsModule, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-list-task',
-  imports: [TaskComponent, NgFor],
+  imports: [TaskComponent, NgFor, FormsModule],
   templateUrl: './list-task.component.html',
   styleUrl: './list-task.component.css'
 })
 export class ListTaskComponent implements OnInit{
   service: AssignTaskService = inject(AssignTaskService);
+  filter: number = 0;
 
   ngOnInit(): void {
       this.service.getUserTasks();
+  }
+
+
+
+  filterTasks() {
+    this.service.filteredData(this.filter)
   }
 
 }
