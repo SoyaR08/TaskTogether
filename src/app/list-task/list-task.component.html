@@ -1,0 +1,12 @@
+<div class="listTasks">
+    <div class="clipboardheader"></div>
+    <div class="clipboard">
+        <div class="title">
+            <h1>Tareas pendientes</h1>
+        </div>
+        <div class="tasks">
+            <app-task *ngFor="let task of service.tasks()" [task]="task"></app-task>
+        </div>
+    </div>
+
+</div>
