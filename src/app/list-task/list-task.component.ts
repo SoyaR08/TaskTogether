@@ -12,16 +12,16 @@ import { FormsModule, NgModel } from '@angular/forms';
 })
 export class ListTaskComponent implements OnInit{
   service: AssignTaskService = inject(AssignTaskService);
-  filter: number = 0;
+  filter: string = '3';
 
   ngOnInit(): void {
-      this.service.getUserTasks();
+    this.service.getUserTasks();
   }
 
 
 
-  filterTasks() {
-    this.service.filteredData(this.filter)
+  formatNumber(number: any) {
+    return Number.parseInt(number);
   }
 
 }

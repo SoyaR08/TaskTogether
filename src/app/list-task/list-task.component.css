@@ -28,7 +28,7 @@
 }
 
 .clipboardheader {
-    width: 360px;
+    width: 20vw !important;
     height: 40px !important;
     background-color: grey;
     border-top-left-radius: 4px;

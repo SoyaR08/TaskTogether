@@ -6,7 +6,7 @@
                 <h1>Tareas pendientes</h1>
             </div>
             <div class="tasks">
-                <app-task *ngFor="let task of service.filteredData()" [task]="task"></app-task>
+                <app-task *ngFor="let task of service.filteredData(formatNumber(filter))" [task]="task"></app-task>
             </div>
         </div>
     </div>
@@ -18,12 +18,13 @@
         </div>
         <div class="filter">
             <label for="taskFilter">Filtrar por prioridad</label>
-            <select name="taskFilter" id="taskFilter" [(ngModel)]="filter" (change)="filterTasks()">
-                <option value="3" selected>Sin filtro</option>
+            <select name="taskFilter" id="taskFilter" [(ngModel)]="filter">
+                <option value="3">Sin filtro</option>
                 <option value="0">Baja</option>
                 <option value="1">Media</option>
                 <option value="2">Alta</option>
             </select>
+
             {{filter}}
         </div>
     </div>
