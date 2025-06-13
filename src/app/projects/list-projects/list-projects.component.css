@@ -93,6 +93,15 @@ tr {
     letter-spacing: 0.5px;
 }
 
+.button {
+    background-color: #FF9F1C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 2px 3px;
+    margin: 1px;
+}
+
 /* From Uiverse.io by alexruix */
 .loader {
     width: 80px;

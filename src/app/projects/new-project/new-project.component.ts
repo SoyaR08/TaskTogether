@@ -29,7 +29,7 @@ export class NewProjectComponent {
     start_date: ['', [Validators.required, notBeforeToday]],
     description: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(300)]],
     end_date: ['', [Validators.required]],
-    status: ['IN_PROGRESS'],
+    status: [0],
     members: this.fb.array([]) //array de miembros del proyecto
   }, { validators: this.fechaInicioMenorQueFin() })
 

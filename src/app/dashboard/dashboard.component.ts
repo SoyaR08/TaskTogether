@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+
+  login: LoginService = inject(LoginService);
 
 }
