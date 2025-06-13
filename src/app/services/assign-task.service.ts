@@ -17,11 +17,11 @@ export class AssignTaskService {
 
 
 
-  filteredData(filterCondition?: number) {
+  filteredData(filterCondition?: number, taskName: string = '') {
     if (filterCondition === 0 || filterCondition === 1 || filterCondition === 2) {
-      return this.userTasks().filter(t => t.priority === filterCondition);
+      return this.userTasks().filter(t => t.priority === filterCondition && t.name.toLowerCase().includes(taskName));
     }
-    return this.userTasks();
+    return this.userTasks().filter(t => t.name.toLowerCase().includes(taskName));
   }
 
 

@@ -6,14 +6,14 @@
                 <h1>Tareas pendientes</h1>
             </div>
             <div class="tasks">
-                <app-task *ngFor="let task of service.filteredData(formatNumber(filter))" [task]="task"></app-task>
+                <app-task *ngFor="let task of service.filteredData(formatNumber(filter), taskName)" [task]="task"></app-task>
             </div>
         </div>
     </div>
     <div class="taskFinder">
         <div class="finder">
             <label for="taskFinder">Buscar Tarea</label>
-            <input type="text" placeholder="Introduce el nombre de una tarea">
+            <input type="text" placeholder="Introduce el nombre de una tarea" [(ngModel)]="taskName">
 
         </div>
         <div class="filter">
@@ -25,7 +25,6 @@
                 <option value="2">Alta</option>
             </select>
 
-            {{filter}}
         </div>
     </div>
 </div>

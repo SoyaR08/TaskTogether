@@ -13,15 +13,21 @@ import { FormsModule, NgModel } from '@angular/forms';
 export class ListTaskComponent implements OnInit{
   service: AssignTaskService = inject(AssignTaskService);
   filter: string = '3';
+  taskName: string = '';
 
   ngOnInit(): void {
     this.service.getUserTasks();
   }
 
 
-
-  formatNumber(number: any) {
+  /**
+   * El select me ponía el valor en string lo que me complicaba el filtrado
+   * @param number El número en formato string
+   * @returns el número en formato number
+   */
+  formatNumber(number: any): number {
     return Number.parseInt(number);
   }
+
 
 }
