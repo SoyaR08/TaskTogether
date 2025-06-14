@@ -17,26 +17,26 @@
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/projects')}" [routerLink]="['/projects']"
         routerLinkActive="router-link-active">
-        <img [src]="!routerService.isOnRoute('/projects') ? ['assets/folder.svg'] : ['assets/folder_openfilled.svg']"
+        <img class="svg" [src]="!routerService.isOnRoute('/projects') ? ['assets/folder.svg'] : ['assets/folder_openfilled.svg']"
             alt="carpeta de proyectos" width="50" height="50">
         <a>Mis Proyectos</a>
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/tasks')}" [routerLink]="['/tasks']"
         routerLinkActive="router-link-active">
-        <img [src]="!routerService.isOnRoute('/tasks') ? ['assets/clipboard.svg'] : ['assets/clipboardfilled.svg']"
+        <img class="svg" [src]="!routerService.isOnRoute('/tasks') ? ['assets/clipboard.svg'] : ['assets/clipboardfilled.svg']"
             alt="portapapeles" width="50" height="50">
         <a>Tareas</a>
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/projects/newproject')}" [routerLink]="['/projects/newproject']">
-        <img [src]="!routerService.isOnRoute('/projects/newproject') ? ['assets/add_circle.svg'] : ['assets/add_circle_filled.svg']" alt="portapapeles" width="50" height="50">
+        <img class="svg" [src]="!routerService.isOnRoute('/projects/newproject') ? ['assets/add_circle.svg'] : ['assets/add_circle_filled.svg']" alt="portapapeles" width="50" height="50">
         <a>Nuevo Proyecto</a>
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/addColaborators')}" [routerLink]="['/addColaborators']">
-        <img [src]="!routerService.isOnRoute('/addColaborators') ? ['assets/person_add.svg'] : ['assets/person_add_filled.svg']" alt="portapapeles" width="50" height="50">
+        <img class="svg" [src]="!routerService.isOnRoute('/addColaborators') ? ['assets/person_add.svg'] : ['assets/person_add_filled.svg']" alt="portapapeles" width="50" height="50">
         <a>Añadir Colaborador</a>
     </div>
     <div [ngClass]="{'selected': routerService.isOnRoute('/settings')}">
-        <img [src]="['assets/settings.svg']" alt="portapapeles" width="50" height="50">
+        <img class="svg" [src]="['assets/settings.svg']" alt="portapapeles" width="50" height="50">
         <a>Configuración</a>
     </div>
 </aside>

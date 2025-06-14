@@ -79,3 +79,10 @@
     border-radius: 4px;
     padding: 4px;
 }
+
+@media (max-width: 1170px) {
+    .clipboard {
+        height: calc(90vh - 170px);
+
+    }
+}
