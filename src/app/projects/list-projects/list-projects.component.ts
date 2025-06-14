@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { ProjectService } from '../../services/project.service';
-import { NgClass, NgFor, NgStyle } from '@angular/common';
+import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
 import Swal from 'sweetalert2';
 import { RouterLink } from '@angular/router';
 import { RangePipe } from '../../pipes/range.pipe';
 
 @Component({
   selector: 'app-list-projects',
-  imports: [NgFor, RouterLink, RangePipe, NgClass],
+  imports: [NgFor, RouterLink, RangePipe, NgClass, NgIf],
   templateUrl: './list-projects.component.html',
   styleUrl: './list-projects.component.css'
 })

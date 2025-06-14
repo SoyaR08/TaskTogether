@@ -110,7 +110,12 @@ export class ProjectService {
 
           this.getProjects(1);
         },
-        error: err => alert(err)
+        error: err => Swal.fire({
+            title: 'Error',
+            text: `No se ha podido finalizar el proyecto por el siguiente motivo: ${err.message || err.error}`,
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          })
       })
   }
 
