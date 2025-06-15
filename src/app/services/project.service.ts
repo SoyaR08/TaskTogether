@@ -11,7 +11,7 @@ import { Record } from '../interfaces/record';
 })
 export class ProjectService {
 
-  private apiUrl = 'http://localhost:8080/projects'
+  private apiUrl = 'https://tasktogether-api.onrender.com/projects'
   private activeProjects = signal<ProjectPage>({
     content: [],
     pageable: {

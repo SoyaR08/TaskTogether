@@ -9,7 +9,7 @@ import { UserMember } from '../interfaces/user/user-member';
 })
 export class MemberService {
 
-  private baseUrl: string = 'http://localhost:8080/members';
+  private baseUrl: string = 'https://tasktogether-api.onrender.com/members';
   private projectsSignal = signal<{id: Number, name: string}[]>([]);
   private membersSignal = signal<UserMember[]>([]);
   constructor(private http: HttpClient) { }

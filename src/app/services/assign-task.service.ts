@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 export class AssignTaskService {
 
   private http: HttpClient = inject(HttpClient);
-  private baseUrl: string = 'http://localhost:8080/assigntask';
+  private baseUrl: string = 'https://tasktogether-api.onrender.com/assigntask';
   private userTasks = signal<any[]>([]);
 
   get tasks() {
