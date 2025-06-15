@@ -111,6 +111,7 @@ img {
     .svg {
         height: 40px;
         width: 40px;
+        fill: var(--darkblue);
     }
 
     .inter-navbar a {
@@ -119,5 +120,9 @@ img {
 
     .navbar>div.selected {
         border-radius: 100%;
+    }
+
+    .navbar .selected .svg {
+        fill: var(--white);
     }
 }

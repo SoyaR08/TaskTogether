@@ -118,6 +118,10 @@
   font-size: 80px;
 }
 
+.list {
+  overflow-y: scroll;
+}
+
 @media (max-width: 1040px) {
   .flip-card {
     width: 290px;

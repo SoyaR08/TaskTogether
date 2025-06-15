@@ -19,9 +19,9 @@ export class AssignTaskService {
 
   filteredData(filterCondition?: number, taskName: string = '') {
     if (filterCondition === 0 || filterCondition === 1 || filterCondition === 2) {
-      return this.userTasks().filter(t => t.priority === filterCondition && t.name.toLowerCase().includes(taskName));
+      return this.userTasks().filter(t => t.priority === filterCondition && t.name.toLowerCase().includes(taskName.toLowerCase()));
     }
-    return this.userTasks().filter(t => t.name.toLowerCase().includes(taskName));
+    return this.userTasks().filter(t => t.name.toLowerCase().includes(taskName.toLowerCase()));
   }
 
 

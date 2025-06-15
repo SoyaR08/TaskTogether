@@ -3,14 +3,15 @@
         <h1 class="lexend-giga-text">TaskTogether</h1>
     </div>
     <div class="dropdowns" *ngIf="!isOnRoute('/')">
-        Area de trabajo
-        Proyectos Recientes
+        <a>Área de trabajo</a>
+        <a>Proyectos Recientes</a>
     </div>
+
     <div class="pageInfo" *ngIf="isOnRoute('/')">
         <button>Funciones</button>
         <button>Soluciones</button>
         <button>TaskTogether Fundation</button>
-        
+
     </div>
     <div class="input-group" *ngIf="!isOnRoute('/')">
         <form>
@@ -18,21 +19,20 @@
                 <img src="images/search.svg" alt="Lupa de búsqueda">
             </label>
             <input type="text" name="findProject" id="findProject" placeholder="Introduzca un nombre de proyecto">
-        </form>        
+        </form>
     </div>
     <div *ngIf="!loginService.isLoged()" class="buttons">
-        <button [routerLink]="['/login']" routerLinkActive="router-link-active" >Inicia Sesión</button>
+        <button [routerLink]="['/login']" routerLinkActive="router-link-active">Inicia Sesión</button>
         <button [routerLink]="['/register']" routerLinkActive="router-link-active">Registrate</button>
     </div>
 
     <div (click)="openDropdown = !openDropdown" class="dropdown" *ngIf="loginService.isLoged()">
-        <img class="dropdown-btn" src="assets/account_circle.svg" alt="Circulo de cuenta" width="50" height="50">
-        <div [ngClass]="{'dropdown-content': !openDropdown, 'dropdown-content-opened': openDropdown}" >
+        <img class="dropdown-btn" src="assets/account_circle.svg" alt="Circulo de cuenta">
+        <div [ngClass]="{'dropdown-content': !openDropdown, 'dropdown-content-opened': openDropdown}">
             <a [routerLink]="['/profile']" routerLinkActive="router-link-active">Perfil</a>
-            <a [routerLink]="['/adminSection']" routerLinkActive="router-link-active"  *ngIf="loginService.isAdmin()">Sección de administrador</a>
+            <a [routerLink]="['/adminSection']" routerLinkActive="router-link-active"
+                *ngIf="loginService.isAdmin()">Sección de administrador</a>
             <a (click)="loginService.logout()">Cerrar Sesión</a>
         </div>
     </div>
 </div>
-
-

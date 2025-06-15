@@ -26,7 +26,7 @@
                 </div>
                 <div class="flip-card-back active-projects-back active-projects-border">
                     <p class="title">Resumen</p>
-                    <ul>
+                    <ul class="list">
                         <li *ngFor="let prj of dashboard.stats().recentProyects">
                             {{prj.name}}
                         </li>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="flip-card-back active-tasks-border active-tasks-back">
                     <p class="title">Resumen</p>
-                    <ul>
+                    <ul class="list">
                         <li *ngFor="let tsk of dashboard.stats().progressTasks">
                             {{tsk.name}} | {{tsk.limitDate}} | {{tsk.priority}}
                         </li>
@@ -60,9 +60,11 @@
                 </div>
                 <div class="flip-card-back pending-tasks-back pending-tasks-border">
                     <p class="title">Resumen</p>
-                    <li *ngFor="let tsk of dashboard.stats().toExpireTasks">
-                            {{tsk.name}} | {{tsk.limitDate}} | {{tsk.priority}}
-                        </li>
+                    <ul class="list">
+                        <li *ngFor="let tsk of dashboard.stats().toExpireTasks">
+                                {{tsk.name}} | {{tsk.limitDate}} | {{tsk.priority}}
+                            </li>
+                    </ul>
                 </div>
             </div>
         </div>

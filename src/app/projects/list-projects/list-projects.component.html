@@ -10,7 +10,19 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+
+        <tbody *ngIf="project.loading()">
+            <tr class="tableBody">
+              <td colspan="5">
+                <div class="loader">
+                  <span class="loader-text">Cargando...</span>
+                  <span class="load"></span>
+                </div>
+              </td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="!project.loading()">
             <tr class="tableBody" *ngFor="let prj of project.userProjects().content">
                 <td>IMG</td>
                 <td [routerLink]="[`/projects/projectView`]" [queryParams]="{'projectId': prj.id}">{{prj.name}}</td>

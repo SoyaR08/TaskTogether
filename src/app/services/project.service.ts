@@ -44,6 +44,10 @@ export class ProjectService {
   private http: HttpClient = inject(HttpClient)
   private historical = signal<Record[]>([])
 
+  get loading() {
+    return this.isLoading.asReadonly();
+  }
+
   get userProjects() {
     return this.activeProjects.asReadonly();
   }
