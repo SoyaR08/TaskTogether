@@ -5,24 +5,44 @@
         <thead>
             <tr class="header">
                 <th colspan="2">Nombre</th>
-                <th>Descripción</th>
                 <th>Fecha de inicio</th>
                 <th>Fecha de fin</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+
+        <tbody *ngIf="project.loading()">
+            <tr class="tableBody">
+              <td colspan="5">
+                <div class="loader">
+                  <span class="loader-text">Cargando...</span>
+                  <span class="load"></span>
+                </div>
+              </td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="!project.loading()">
             <tr class="tableBody" *ngFor="let prj of project.userProjects().content">
                 <td>IMG</td>
-                <td [routerLink]="[`/projects/${prj.id}-${formatNames(prj.name)}`]">{{prj.name}}</td>
-                <td>{{prj.description}}</td>
+                <td [routerLink]="[`/projects/projectView`]" [queryParams]="{'projectId': prj.id}">{{prj.name}}</td>
                 <td>{{prj.start_date}}</td>
                 <td>{{prj.end_date}}</td>
                 <td>
-                    <button>Editar Proyecto</button>
-                    <button (click)="finish(prj.id)">Finalizar Proyecto</button>
+                    <button *ngIf="prj.status !== 1" class="button">Editar Proyecto</button>
+                    <button *ngIf="prj.owner && prj.status !== 1" class="button" (click)="finish(prj.id)">Finalizar Proyecto</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div class="pagination">
+        <button (click)="changePage(1)"><<</button>
+        <button (click)="changePage(pageNumber - 1)"> < </button>
+        <button [ngClass]="{'actualPage': pageNumber === pg}" *ngFor="let pg of project.userProjects().totalPages | range" (click)="changePage(pg)">
+            {{ pg }}
+        </button>
+        <button (click)="changePage(pageNumber + 1)"> > </button>
+        <button (click)="changePage(project.userProjects().totalPages)"> >> </button>
+
+    </div>
 </div>

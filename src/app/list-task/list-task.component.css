@@ -1,0 +1,112 @@
+.listTasks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    gap: 10%;
+}
+
+.clipboardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+}
+
+.clipboard {
+    width: 38vw;
+    height: calc(90vh - 70px);
+    background-color: white;
+    border: 10px solid #663D16;
+    border-radius: 4px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.clipboardheader {
+    width: 20vw !important;
+    height: 40px !important;
+    background-color: grey;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+    /* La mitad de 70px (su altura) en negativo */
+    width: 360px;
+    height: 70px;
+    background-color: grey;
+    z-index: 2;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.tasks {
+    overflow-y: scroll;
+    height: fit-content;
+}
+
+.taskFinder {
+    height: 15vh;
+    width: 35vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 5px;
+}
+
+.finder .filter {
+    width: 50%;
+    height: 50%;
+}
+
+.finder input {
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: 4px;
+    width: 100%;
+}
+
+.filter select {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+@media (max-width: 1170px) {
+
+    .listTasks {
+        gap: 8%;
+    }
+
+    .clipboard {
+        height: calc(90vh - 170px);
+
+    }
+}
+
+@media (max-width: 900px) {
+
+    .listTasks {
+        gap: 5%;
+    }
+
+    .taskFinder {
+        flex-direction: column;
+    }
+}

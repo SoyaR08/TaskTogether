@@ -1,0 +1,28 @@
+<div class="modal">
+    <div class="commentSection">
+        <h1>Comentario de la tarea</h1>
+        <div class="coments">
+            <div class="commentContainer" *ngFor="let cmt of service.comments()" [ngClass]="{'message': cmt.owner}">
+                <div class="userInfo" [ngClass]="{'ownerInfo': cmt.owner}">
+                    <label for="foto de perfil de {{cmt.user.name}}">{{cmt.user.name}}</label>
+                    <img class="commentImg" src="{{cmt.user.profile_pic}}" alt="foto de perfil de {{cmt.user.name}}" height="25" width="25">
+                </div>
+                <div class="userComment" [ngClass]="{'commentOwner': cmt.owner}">
+                    <p>{{cmt.content}}</p>
+                    <small>{{cmt.date}}</small>
+                </div>
+            </div>
+        </div>
+        <div class="sendComment">
+            <form class="commentsform" [formGroup]="commentForm" (ngSubmit)="submit()">
+                <div class="input">
+                    <input class="sender" type="text" name="commentsform" id="commentsform" placeholder="Introduce un texto para enviar un comentario" formControlName="content">
+                    <button class="sendButton" type="submit">Enviar</button>
+                </div>
+                <small *ngIf="isInvalidField('content')">Introduzca un comentario de al menos 15 carácteres</small>
+            </form>
+            {{commentData.taskId}}
+            {{commentData.date}}
+        </div>
+    </div>
+</div>

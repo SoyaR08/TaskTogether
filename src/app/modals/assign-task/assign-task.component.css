@@ -1,9 +1,87 @@
-.modal {
-    height: 100%;
-    width: 100%;
+.inter-labelText {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 20;
+    font-style: normal;
+}
+
+.taskBox {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Convierte el contenedor en un flexbox para que sus hijos se alineen según flexbox */
     flex-direction: column;
-    gap: 10px;
+    /* Hace que los hijos (header y form) se coloquen en una columna */
+    height: 80%;
+    /* Altura fija del contenedor */
+    width: 80%;
+    /* Ancho fijo del contenedor */
+    background-color: white;
+    /* Color de fondo */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 5px -4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.taskForm {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+small {
+    color: red;
+}
+
+.field {
+    width: 100%;
+}
+
+.field>label {
+    display: block;
+}
+
+.field>input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.field>select {
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.field>input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.7);
+    /* naranja */
+}
+
+.field>b {
+    display: block;
+}
+
+.field > textarea {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+form {
+    padding: 5px;
+}
+
+.submitbutton {
+    background-color: #FF9F1C;
+    border-radius: 15px;
+    color: white;
+    width: 60%;
+    height: 43px;
+    border: none;
+    display: block;
 }

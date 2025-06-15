@@ -1,3 +1,4 @@
+import { UserMinimumDetails } from './user-minimum-details';
 export interface AddProject {
     name: string;
     description: string;
@@ -5,4 +6,6 @@ export interface AddProject {
     end_date: string;
     status: string;
     userCreator: Number;
+    members: UserMinimumDetails[];
 }
+

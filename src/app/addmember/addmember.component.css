@@ -145,7 +145,40 @@
     display: block;
 }
 
+.memberList {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 50px;
+    max-width: 100%;
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 10px;
+    overflow: scroll;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
 
+.memberItem {
+    display: flex;
+    flex: 0 0 calc(20% - 8px);
+    align-items: center;
+}
+
+.membername {
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 5px
+}
+
+.memberButton {
+    background-color: var(--yellow);
+    border-radius: 5px;
+    padding: 4px 8px;
+    color: white;
+    border: none;
+    margin: 2px;
+}
 
 small {
     color: red;

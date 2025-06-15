@@ -14,7 +14,7 @@ export class LoginService {
 
   private baseUrl = 'http://localhost:8080/';
   private isLogedSignal = signal<boolean>(false);
-  private userDetails = signal<UserMinimumDetails>({ id: 0, name: '', email: '', role: '', address: '', job: '' });
+  userDetails = signal<UserMinimumDetails>({ id: 0, name: '', email: '', role: '', address: '', job: '' });
   private router: Router = inject(Router)
 
   constructor(private http: HttpClient) {
@@ -88,5 +88,29 @@ export class LoginService {
         },
         error: err => console.log(err)
       })
+  }
+
+  editProfile(profile: FormData) {
+    const token: string | null = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+    this.http.put<any>(`${this.baseUrl}users/${this.userDetails().id}`, profile, {headers})
+    .subscribe({
+      next: response => Swal.fire({
+        title: '¡Exito!',
+        text: 'Los cambios se han guardado correctamente.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+
+      }), error: err => Swal.fire({
+        title: '¡Error!',
+        text: err.error,
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+
+      })
+    })
   }
 }

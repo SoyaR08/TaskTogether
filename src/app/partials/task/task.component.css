@@ -2,7 +2,7 @@
   position: relative;
   /* para que el hijo absoluto se posicione respecto a este */
   display: flex;
-  max-width: 290px;
+  max-width: 300px;
   background-color: rgb(205, 189, 189);
   padding: 6px 8px 6px 16px;
   /* más padding-left para dejar espacio para la barra */
@@ -50,8 +50,44 @@
   padding: 5px;
 }
 
+.modalbutton {
+  background-color: var(--darkblue);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border: none;
+}
+
+.modalbutton:hover {
+  background-color: var(--darkbluehover);
+}
+
 .submitbutton:hover {
   transition: 0.3s;
   background-color: hsl(35, 90%, 40%);
   cursor: pointer;
+}
+
+@media (max-width: 850px) {
+  .task {
+
+    max-width: 100%;
+
+    padding: 5px 7px 5px 15px;
+    /* más padding-left para dejar espacio para la barra */
+
+    margin-bottom: 8px;
+
+  }
+
+  .submitbutton {
+
+
+    width: calc(max-content + 3.5px);
+    height: calc(max-content + 3.5px);
+
+    padding: 3.5px;
+  }
 }

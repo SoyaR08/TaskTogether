@@ -44,6 +44,10 @@ export class ProjectService {
   private http: HttpClient = inject(HttpClient)
   private historical = signal<Record[]>([])
 
+  get loading() {
+    return this.isLoading.asReadonly();
+  }
+
   get userProjects() {
     return this.activeProjects.asReadonly();
   }
@@ -110,7 +114,12 @@ export class ProjectService {
 
           this.getProjects(1);
         },
-        error: err => alert(err)
+        error: err => Swal.fire({
+            title: 'Error',
+            text: `No se ha podido finalizar el proyecto por el siguiente motivo: ${err.message || err.error}`,
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          })
       })
   }
 
@@ -122,7 +131,7 @@ export class ProjectService {
       'Authorization': `Bearer ${token}`
     })
 
-    this.http.get<Record[]>(`${this.apiUrl}/${projectId}/historical`, {headers})
+    this.http.get<Record[]>(`${this.apiUrl}/historical/${projectId}`, {headers})
       .subscribe({
         next: response => this.historical.set(response),
         error: err => alert(err.message)

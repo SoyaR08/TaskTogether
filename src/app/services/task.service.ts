@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { AddTask } from '../interfaces/add-task';
+
+import { Task } from '../interfaces/task';
+import { Observable, Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -10,25 +13,56 @@ export class TaskService {
 
   private http: HttpClient = inject(HttpClient);
   private baseUrl: string = 'http://localhost:8080/tasks';
+  private taskAddedSubject = new Subject<Task>();
+  private activeTasksSignal = signal<{id: Number, name: string}[]>([]);
 
-  addTask(task: AddTask) {
+  get taskAdded$() {
+    return this.taskAddedSubject.asObservable();
+  }
+
+  get activeTasks() {
+    return this.activeTasksSignal.asReadonly();
+  }
+
+  getActiveTasks(project: Number) {
+
+    const token = localStorage.getItem('token')
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    })
+
+    this.http.get<{id: Number, name: string}[]>(`${this.baseUrl}/project?projectId=${project}`, {headers})
+    .subscribe({
+      next: response => this.activeTasksSignal.set(response),
+      error: error => Swal.fire({
+        'title': 'Error al obtener las tareas activas',
+        'icon': 'error',
+        'text': `Error al obtener las tareas activas: ${error.message}`
+      })
+    })
+
+  }
+
+  addTask(task: AddTask): Observable<Task> {
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     })
 
-    return this.http.post<{message: string}>(`${this.baseUrl}/add`, task, { headers})
-    .subscribe({
-      next: response => Swal.fire({
-        'title': 'Tarea añadida',
-        'icon': 'success',
-        'text': response.message
-      }),
-      error: error => {
-        console.error('Error al añadir la tarea:', error);
-        alert('Error al añadir la tarea. Por favor, inténtelo de nuevo más tarde. '+error.message);
-      }
+    return this.http.post<Task>(`${this.baseUrl}`, task, { headers});
+
+  }
+
+  changeTaskStatus(taskId: Number, status: number) {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
     })
+
+    return this.http.patch(`${this.baseUrl}/${taskId}`, {id: taskId, status: status}, {headers});
+
 
   }
 }

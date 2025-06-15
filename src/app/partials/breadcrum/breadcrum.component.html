@@ -1,18 +1,24 @@
-<!-- <p>{{routeService.actualRoute()}}</p> -->
 <div class="breadcrumb">
-    <span [routerLink]="['/dashboard']">Inicio </span> <span><svg xmlns="http://www.w3.org/2000/svg" height="12px"
-            viewBox="0 -960 960 960" width="24px" fill="#011627">
-            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-        </svg> </span>
-    @for (part of pathFormater(routeService.actualRoute()); track part.route) {
-    @if (pathFormater(routeService.actualRoute()).length > 1) {
-    <span [routerLink]="[part.route]">{{part.breadcrumb}}</span> <span> <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960"
-            width="24px" fill="#011627">
-            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-        </svg> </span>
-    } @else {
-    <span [routerLink]="[part.route]">{{part.breadcrumb}}</span>
-    }
-    }
+  <span [routerLink]="['/dashboard']">Inicio</span>
+  <span>
+    <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="24px" fill="#011627">
+      <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+    </svg>
+  </span>
 
+  @for (part of pathFormater(routeService.actualRoute()); let i = $index; track part.route) {
+    <span
+      [routerLink]="getRouterLink(i, pathFormater(routeService.actualRoute()))"
+      [queryParams]="getQueryParams(i, pathFormater(routeService.actualRoute()))"
+    >
+      {{ part.breadcrumb }}
+    </span>
+    @if (i < pathFormater(routeService.actualRoute()).length - 1) {
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="24px" fill="#011627">
+          <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
+        </svg>
+      </span>
+    }
+  }
 </div>

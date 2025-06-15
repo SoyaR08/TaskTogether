@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Dashboard } from '../interfaces/dashboard';
+import { Task } from '../interfaces/task';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,41 @@ export class ProjectdashboardService {
 
   get dashboard() {
     return this.projectDashboard.asReadonly();
+  }
+
+  /**
+   * Función que añade una nueva tarea al dashboard del proyecto
+   * @param task La tarea que acabamos de añadir
+   */
+  setDashboard(task: Task): void {
+   
+    //Hago un switch por el estado para añadir a una lista u otra y una vez hecho, ordeno por prioridad
+    switch (task.status) {
+      case 0:
+        this.projectDashboard.update(tasks => {
+          return {
+            ...tasks,
+            pending: [...tasks.pending, task].sort((a, b) => b.priority - a.priority)
+          }
+        })
+        break;
+      case 1:
+        this.projectDashboard.update(tasks => {
+          return {
+            ...tasks,
+            progress: [...tasks.progress, task].sort((a, b) => b.priority - a.priority)
+          }
+        })
+        break;
+      case 2:
+        this.projectDashboard.update(tasks => {
+          return {
+            ...tasks,
+            finished: [...tasks.finished, task].sort((a, b) => b.priority - a.priority)
+          }
+        })
+        break;
+    }
   }
 
   public getDashboard(projectId: Number, token: string) {

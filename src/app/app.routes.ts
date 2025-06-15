@@ -10,6 +10,7 @@ import { ProjecthomeComponent } from './projecthome/projecthome.component';
 
 import { AddmemberComponent } from './addmember/addmember.component';
 import { TaskComponent } from './partials/task/task.component';
+import { ListTaskComponent } from './list-task/list-task.component';
 
 
 export const routes: Routes = [
@@ -23,9 +24,10 @@ export const routes: Routes = [
     {path: 'projects', children: [
         {path: '', component: ListProjectsComponent},
         {path: 'newproject', component: NewProjectComponent, pathMatch: 'full'},
-        {path: ':projectName', component: ProjecthomeComponent}
+        {path: 'projectView', component: ProjecthomeComponent},
+        //{path: ':projectName', component: ProjecthomeComponent}
     ]},
-    
+    {path: 'tasks', component: ListTaskComponent},
     {path: 'addColaborators', component: AddmemberComponent},
     {path: 'prueba', component: TaskComponent},
     {path: 'adminSection', loadChildren: () => import('./admin/adminroutes').then(m => m.routes)}, 

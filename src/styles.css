@@ -9,6 +9,7 @@
     --darkBlue: #1c5e7a;
     --darkGreen: #2b7028;
     --darkYellow: #c47d19;
+    --darkbluehover: #022542;
 }
 
 * {
@@ -52,7 +53,16 @@ aside {
   box-shadow: none;
 }
 
-
+/*Clase de los modales del proyecto*/
+.modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

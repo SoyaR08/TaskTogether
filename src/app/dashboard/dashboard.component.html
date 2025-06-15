@@ -1,14 +1,36 @@
 <div class="dashboard">
     <div class="stats">
+
+        <!-- <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front active-projects-border">
+                    <p class="title active-projects">Proyectos Activos</p>
+                    <p class="giant">{{dashboard.stats().activeProjectsNumber}}</p>
+                </div>
+                <div class="flip-card-back active-projects-back active-projects-border">
+                    <p class="title">Resumen</p>
+                    <ul>
+                        <li *ngFor="let prj of dashboard.stats().recentProyects">
+                            {{prj.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front active-projects-border">
                     <p class="title active-projects">Proyectos Activos</p>
-                    <p>Hover Me</p>
+                    <p class="giant">{{dashboard.stats().activeProjectsNumber}}</p>
                 </div>
                 <div class="flip-card-back active-projects-back active-projects-border">
-                    <p class="title">BACK</p>
-                    <p>Leave Me</p>
+                    <p class="title">Resumen</p>
+                    <ul class="list">
+                        <li *ngFor="let prj of dashboard.stats().recentProyects">
+                            {{prj.name}}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -17,11 +39,15 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front active-tasks-border">
                     <p class="title active-tasks">Tareas Activas</p>
-                    <p>Hover Me</p>
+                    <p class="giant">{{dashboard.stats().progressTasksNumber}}</p>
                 </div>
                 <div class="flip-card-back active-tasks-border active-tasks-back">
-                    <p class="title">BACK</p>
-                    <p>Leave Me</p>
+                    <p class="title">Resumen</p>
+                    <ul class="list">
+                        <li *ngFor="let tsk of dashboard.stats().progressTasks">
+                            {{tsk.name}} | {{tsk.limitDate}} | {{tsk.priority}}
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -30,11 +56,15 @@
             <div class="flip-card-inner">
                 <div class="flip-card-front pending-tasks-border">
                     <p class="title pending-tasks">Tareas a expirar</p>
-                    <p>Hover Me</p>
+                    <p class="giant">{{dashboard.stats().toExpireTasksNumber}}</p>
                 </div>
                 <div class="flip-card-back pending-tasks-back pending-tasks-border">
-                    <p class="title">BACK</p>
-                    <p>Leave Me</p>
+                    <p class="title">Resumen</p>
+                    <ul class="list">
+                        <li *ngFor="let tsk of dashboard.stats().toExpireTasks">
+                                {{tsk.name}} | {{tsk.limitDate}} | {{tsk.priority}}
+                            </li>
+                    </ul>
                 </div>
             </div>
         </div>
