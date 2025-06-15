@@ -2,25 +2,27 @@
     <header class="inter-title formBoxHeader">
         <h1>Editar Perfil</h1>
     </header>
-    <form method="post" class="editProfileForm">
-        <div class="image inter-labelText">
-            <div style="height: 200px; width: 200px; border-radius: 100%; background-color: aquamarine;"></div>
-            <label for="pfp">Foto de perfil</label>
-            <input type="file" name="pfp" id="pfp">
-        </div>
+    <form method="post" class="editProfileForm" enctype="multipart/form-data" [formGroup]="profileForm">
+        
+        <div class="group">
+            
+            <div class="field inter-labelText">
+                <label for="pfp">Foto de perfil</label>
+                <input type="file" name="pfp" id="pfp">
+            </div>
 
-        <div class="topRight">
-            <div class="inter-labelText">
+
+            <div class="field inter-labelText">
                 <label for="name">Nombre: <small>*</small> </label>
                 <input type="text" name="name" id="name" formControlName="name">
-                <!-- <small *ngIf="isValid('name')">
+                <small *ngIf="isValid('name')">
                     Este campo es requerido
-                </small> -->
+                </small>
             </div>
 
         </div>
 
-        <div class="bottom">
+        <div class="group">
 
             <div class="field inter-labelText">
                 <label>Contraseña: </label>
@@ -39,6 +41,9 @@
                     La contraseñas no coinciden
                 </small> -->
             </div>
+        </div>
+
+        <div class="group">
             <div class="field inter-labelText">
                 <label>Dirección: </label>
                 <input type="text" name="address" formControlName="address">
@@ -47,13 +52,15 @@
                 <label>Trabajo que desempeña: </label>
                 <input type="text" name="job" formControlName="job">
             </div>
-    
-            <div class="centered">
-                <button type="submit" class="submitbutton inter-labelText" (click)="submit()">Confirmar Cambios</button>
-                <!-- <b class="inter-small">¿Tienes una cuenta? <a class="inter-small-bold-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Inicia Sesión</a></b> -->
-    
-            </div>
+
         </div>
+
+        <div class="centered">
+            <button type="submit" class="submitbutton inter-labelText" (click)="submit()">Confirmar Cambios</button>
+            <!-- <b class="inter-small">¿Tienes una cuenta? <a class="inter-small-bold-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Inicia Sesión</a></b> -->
+
+        </div>
+
 
     </form>
     
