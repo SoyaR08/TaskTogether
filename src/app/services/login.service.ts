@@ -12,7 +12,7 @@ import { DecodedToken } from '../interfaces/decoded-token';
 })
 export class LoginService {
 
-  private baseUrl = 'http://localhost:8080/';
+  private baseUrl = 'https://tasktogether-api.onrender.com/';
   private isLogedSignal = signal<boolean>(false);
   userDetails = signal<UserMinimumDetails>({ id: 0, name: '', email: '', role: '', address: '', job: '' });
   private router: Router = inject(Router)

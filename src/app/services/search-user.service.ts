@@ -8,7 +8,7 @@ import { UserMinimumDetails } from '../interfaces/user-minimum-details';
 export class SearchUserService {
 
   private http: HttpClient = inject(HttpClient);
-  private url: string = 'http://localhost:8080/users'
+  private url: string = 'https://tasktogether-api.onrender.com/users'
   private userSignal = signal<UserMinimumDetails[]>([])
 
   get user() {

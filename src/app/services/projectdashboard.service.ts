@@ -8,7 +8,7 @@ import { Task } from '../interfaces/task';
 })
 export class ProjectdashboardService {
 
-  private dashboardUrl: string = 'http://localhost:8080/projects/dashboard';
+  private dashboardUrl: string = 'https://tasktogether-api.onrender.com/projects/dashboard';
   private http: HttpClient = inject(HttpClient);
   private projectDashboard = signal<Dashboard>({
     projectId: 0,
