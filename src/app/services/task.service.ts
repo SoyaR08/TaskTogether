@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class TaskService {
 
   private http: HttpClient = inject(HttpClient);
-  private baseUrl: string = 'https://tasktogether-api.onrender.com/tasks';
+  private baseUrl: string = 'http://localhost:8080/tasks';
   private taskAddedSubject = new Subject<Task>();
   private activeTasksSignal = signal<{id: Number, name: string}[]>([]);
 

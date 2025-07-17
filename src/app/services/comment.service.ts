@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class CommentService {
 
-  private baseUrl: string = "https://tasktogether-api.onrender.com/comments";
+  private baseUrl: string = "http://localhost:8080/comments";
   private http: HttpClient = inject(HttpClient);
   private commentSignal = signal<Commentlist[]>([]);
 

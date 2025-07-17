@@ -11,12 +11,12 @@ export class RegisterService {
   private http: HttpClient = inject(HttpClient);
 
   registerUser (register: Register): Observable<any> {
-    return this.http.post("https://tasktogether-api.onrender.com/register", register)
+    return this.http.post("http://localhost:8080/register", register)
 
   }
 
   checkEmailIfExists(email: string) {
-    return this.http.get<any>(`https://tasktogether-api.onrender.com/nonauth/users/${email}`)
+    return this.http.get<any>(`http://localhost:8080/nonauth/users/${email}`)
     .pipe(
       map(user => !!user),
       catchError(() => of(false))

@@ -5,14 +5,16 @@ import Swal from 'sweetalert2';
 import { Project } from '../interfaces/project';
 import { ProjectPage } from '../interfaces/project-page';
 import { Record } from '../interfaces/record';
+import { Page } from '../interfaces/general/page';
+import { ListedProject } from "../interfaces/listed-project";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
 
-  private apiUrl = 'https://tasktogether-api.onrender.com/projects'
-  private activeProjects = signal<ProjectPage>({
+  private apiUrl = 'http://localhost:8080/projects'
+  private activeProjects = signal<Page<ListedProject>>({
     content: [],
     pageable: {
       pageNumber: 0,

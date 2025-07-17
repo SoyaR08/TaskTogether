@@ -7,7 +7,7 @@ import { UserInfoPresentation } from '../interfaces/UserInfoPresentation';
 })
 export class AdminService {
 
-  private baseUrl = 'https://tasktogether-api.onrender.com/';
+  private baseUrl = 'http://localhost:8080/';
   private http: HttpClient = inject(HttpClient);
   private users = signal<UserInfoPresentation[]>([])
   private loadingData = signal<boolean>(true);

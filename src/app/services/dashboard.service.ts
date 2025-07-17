@@ -9,7 +9,7 @@ import { InitialDashboard } from '../interfaces/general/dashboard';
 export class DashboardService {
 
   private http: HttpClient = inject(HttpClient);
-  private baseUrl: string = "https://tasktogether-api.onrender.com/users";
+  private baseUrl: string = "http://localhost:8080/users";
   private statsSignal = signal<InitialDashboard>({
     activeProjectsNumber: 0,
     progressTasksNumber: 0,
