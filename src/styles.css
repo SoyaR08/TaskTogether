@@ -1,6 +1,30 @@
 @import "tailwindcss";
 
-/* You can add global styles to this file, and also import other style files */
+
+@theme {
+
+    /*Font*/
+    --font-lexend: 'Lexend Giga', sans-serif;
+
+    /*Navbar palette*/
+    --color-navbar-bg: #011627;
+    --color-darkblue-hover: #022542;
+
+    /*Main Palette*/
+    --color-default-blue: #247BA0;
+    --color-default-green: #379634;
+    --color-default-white: #FDFFFC;
+    --color-default-yellow: #FF9F1C;
+    
+    --color-page-background: #DCD9D9;
+
+    /*Dark Palette*/
+    --color-default-darkblue: #1c5e7a;
+    --color-default-darkgreen: #2b7028;
+    --color-default-darkyellow: #c47d19;
+}
+
+/* Temporal, hasta que modifique todo a las clases de Tailwind */
 :root {
     --darkblue: #011627;
     --blue: #247BA0;
