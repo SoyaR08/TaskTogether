@@ -1,12 +1,16 @@
-<div class="listTasks">
+<div class="flex justify-center align-center mt-[3%] gap-[10%]">
     <div class="clipboardContainer">
         <div class="clipboardheader"></div>
-        <div class="clipboard">
+        <div class="w-[38vw] h-[calc(90vh-70px)] bg-white border-[10px] border-[#663D16] rounded flex justify-start items-center flex-col">
             <div class="title">
                 <h1>Tareas pendientes</h1>
             </div>
             <div class="tasks">
                 <app-task *ngFor="let task of service.filteredData(formatNumber(filter), taskName)" [task]="task"></app-task>
+            </div>
+            <div class="flex w-full justify-around">
+                <button class="p-1 bg-navbar-bg text-white rounded">Anterior</button>
+                <button class="p-1 bg-navbar-bg text-white rounded">Siguiente</button>
             </div>
         </div>
     </div>

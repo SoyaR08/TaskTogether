@@ -1,4 +1,4 @@
-<div class="displayHeader">
+<div class="w-full flex justify-between items-center content-center">
     <div class="Apptitle">
         <h1 class="lexend-giga-text">TaskTogether</h1>
     </div>
@@ -27,7 +27,10 @@
     </div>
 
     <div (click)="openDropdown = !openDropdown" class="dropdown" *ngIf="loginService.isLoged()">
-        <img class="dropdown-btn" src="assets/account_circle.svg" alt="Circulo de cuenta">
+        <svg class="dropdown-btn">
+            <use xlink:href="assets/sprites.svg#icon-user-circle"></use>
+        </svg>
+        <!-- <img class="dropdown-btn" src="assets/account_circle.svg" alt="Circulo de cuenta"> -->
         <div [ngClass]="{'dropdown-content': !openDropdown, 'dropdown-content-opened': openDropdown}">
             <a [routerLink]="['/profile']" routerLinkActive="router-link-active">Perfil</a>
             <a [routerLink]="['/adminSection']" routerLinkActive="router-link-active"
