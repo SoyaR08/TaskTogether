@@ -1,0 +1,13 @@
+<div [ngClass]="{'selected': routerService.isOnRoute(icon.route)}" [routerLink]="[icon.route]"
+    routerLinkActive="router-link-active">
+
+    <ng-container *ngIf="!routerService.isOnRoute(icon.route); else Icon">
+        <img class="svg" src="{{icon.svg}}" alt="">
+    </ng-container>
+
+    <ng-template #Icon>
+        <img class="svg" src="{{icon.svgfilled}}" alt="">
+    </ng-template>
+
+    <a>{{ icon.iconName }}</a>
+</div>
