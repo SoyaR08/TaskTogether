@@ -16,17 +16,10 @@
     font-style: normal;
 }
 
-.svg {
-    display: block;
-    height: 50px;
-    width: 50px;
-    fill: var(--white);
-}
-
 
 /* Barra lateral vertical */
 .navbar {
-    background-color: var(--darkblue);
+    background-color: var(--color-navbar-bg);
     height: 100vh;
     width: 190px;
     display: flex;
@@ -44,32 +37,6 @@
     text-align: center;
     flex-direction: column;
     transition: background-color 0.3s ease;
-}
-
-/* Estilo para el item seleccionado */
-.navbar>*.selected {
-    background-color: #034880;
-}
-
-/* Hover solo si NO está seleccionado */
-.navbar>*:hover:not(.selected) {
-    background-color: #022542;
-}
-
-/* Enlaces blancos */
-a {
-    color: var(--white);
-    text-decoration: none;
-}
-
-/* Puntero al pasar por encima */
-.links>*:hover {
-    cursor: pointer;
-}
-
-/* Imagen sin margen extra */
-img {
-    display: block;
 }
 
 /* Adaptación a móviles */
@@ -103,7 +70,7 @@ img {
 
 @media (max-width: 500px) {
     .navbar {
-        background-color: var(--white);
+        background-color: var(--color-default-white);
 
     }
 
@@ -111,7 +78,7 @@ img {
     .svg {
         height: 40px;
         width: 40px;
-        fill: var(--darkblue);
+        fill: var(--color-navbar-bg);
     }
 
     .inter-navbar a {
@@ -123,6 +90,6 @@ img {
     }
 
     .navbar .selected .svg {
-        fill: var(--white);
+        fill: var(--color-default-white);
     }
 }

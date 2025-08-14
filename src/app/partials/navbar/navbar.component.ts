@@ -1,6 +1,5 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { RouteService } from '../../services/route.service';
 import { navbarIcons } from '../../interfaces/general/navbaricon';
 import { NavbarIconComponent } from '../navbar-icon/navbar-icon.component';
