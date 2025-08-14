@@ -20,19 +20,7 @@
     display: block;
     height: 50px;
     width: 50px;
-    fill: var(--white);
-}
-
-
-/* Barra lateral vertical */
-.navbar {
-    background-color: var(--darkblue);
-    height: 100vh;
-    width: 190px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
+    fill: var(--color-default-white);
 }
 
 div {
@@ -103,7 +91,7 @@ img {
 
 @media (max-width: 500px) {
     .navbar {
-        background-color: var(--white);
+        background-color: var(--color-default-white);
 
     }
 
@@ -111,7 +99,7 @@ img {
     .svg {
         height: 40px;
         width: 40px;
-        fill: var(--darkblue);
+        fill: var(--color-navbar-bg);
     }
 
     .inter-navbar a {
@@ -123,6 +111,6 @@ img {
     }
 
     .navbar .selected .svg {
-        fill: var(--white);
+        fill: var(--color-default-white);
     }
 }

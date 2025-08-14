@@ -2,11 +2,15 @@
     routerLinkActive="router-link-active">
 
     <ng-container *ngIf="!routerService.isOnRoute(icon.route); else Icon">
-        <img class="svg" src="{{icon.svg}}" alt="">
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path [attr.d]="icon.svg" />
+        </svg>
     </ng-container>
 
     <ng-template #Icon>
-        <img class="svg" src="{{icon.svgfilled}}" alt="">
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+            <path [attr.d]="icon.svgfilled" />
+        </svg>
     </ng-template>
 
     <a>{{ icon.iconName }}</a>
