@@ -1,11 +1,12 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { RouteService } from '../../services/route.service';
-
+import { navbarIcons } from '../../interfaces/general/navbaricon';
+import { NavbarIconComponent } from '../navbar-icon/navbar-icon.component';
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, NgClass, NgIf],
+  imports: [NgFor, NavbarIconComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -13,5 +14,6 @@ export class NavbarComponent {
 
   currentRoute: string = '';
   routerService: RouteService = inject(RouteService);
+  icons = navbarIcons;
 
 }

@@ -35,11 +35,11 @@
     position: fixed;
 }
 
-.navbar>div {
+.navbar>* {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 15%;
+    height: calc((100vh - 70px) / 6);
     width: 100%;
     text-align: center;
     flex-direction: column;
@@ -47,12 +47,12 @@
 }
 
 /* Estilo para el item seleccionado */
-.navbar>div.selected {
+.navbar>*.selected {
     background-color: #034880;
 }
 
 /* Hover solo si NO está seleccionado */
-.navbar>div:hover:not(.selected) {
+.navbar>*:hover:not(.selected) {
     background-color: #022542;
 }
 
@@ -63,7 +63,7 @@ a {
 }
 
 /* Puntero al pasar por encima */
-.links>div:hover {
+.links>*:hover {
     cursor: pointer;
 }
 
