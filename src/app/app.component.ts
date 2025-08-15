@@ -9,7 +9,7 @@ import { HeaderComponent } from './partials/header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, HeaderComponent, BreadcrumComponent , NgClass, NgIf],
+  imports: [RouterOutlet, NavbarComponent, HeaderComponent, NgClass, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
