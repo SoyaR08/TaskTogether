@@ -44,11 +44,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: #dcd9db;
-
-}
-
 .formBoxHeader {
     display: flex;
     background-color: #011627;
@@ -90,5 +85,13 @@ aside {
     gap: 10px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { 
+    height: 100vh;
+    width: 100vw;
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: #dcd9db;
+}
