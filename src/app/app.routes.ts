@@ -9,18 +9,29 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjecthomeComponent } from './projecthome/projecthome.component';
 
 import { AddmemberComponent } from './addmember/addmember.component';
-import { TaskComponent } from './partials/task/task.component';
 import { ListTaskComponent } from './list-task/list-task.component';
 import { PruebaComponent } from './prueba/prueba.component';
+import { HomeComponent } from './home/home.component';
 
 
 export const routes: Routes = [
     
     {path: '', component: IndexComponent},
-    //{path: '', redirectTo: 'register', pathMatch: 'full'},
+    
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'dashboard', component: DashboardComponent},
+    {path: 'dashboard', component: HomeComponent},
+    // Coming soon...
+    // {path: 'dashboard', component: DashboardComponent, children: [
+    //     {path: '', component: HomeComponent},
+    //     {path: 'profile', component: ProfileComponent},
+    //     {path: 'projects', children: [
+    //         {path: '', component: ListProjectsComponent},
+    //         {path: 'newproject', component: NewProjectComponent, pathMatch: 'full'},
+    //         {path: 'projectView', component: ProjecthomeComponent},
+    //         //{path: ':projectName', component: ProjecthomeComponent}
+    //     ]}
+    // ]},
     {path: 'profile', component: ProfileComponent},
     {path: 'projects', children: [
         {path: '', component: ListProjectsComponent},
