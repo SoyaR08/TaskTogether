@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouteService } from '../services/route.service';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-index',
-  imports: [],
+  imports: [FooterComponent],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
