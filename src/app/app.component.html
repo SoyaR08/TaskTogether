@@ -1,17 +1,21 @@
-<div [ngClass]="{
+<header *ngIf="!routerService.isJustAForm()">
+  <app-header></app-header>
+</header>
+<main [ngClass]="{'justAForm': routerService.isJustAForm()}">
+  <router-outlet></router-outlet>
+</main>
+
+<!-- <div [ngClass]="{
   'grid lg:grid-cols-[190px_1fr] md:grid-cols-[1fr] lg:grid-rows-[70px_1fr] md:grid-rows-[70px_1fr_100px] overflow-hidden m-0 w-full h-full lg:gap-[0px_10px] md:gap-2.5' 
   : !routerService.isJustAForm() && !routerService.isOnRoute('/'), 
   'index': isOnIndex()}">
-  <header *ngIf="!routerService.isJustAForm()">
-    <app-header></app-header> <!---->
-  </header>
-  <!--Lógica de los cambios en el grid simplificada-->
+  
   <main [ngClass]="{'justAForm': routerService.isJustAForm()}">
     <router-outlet></router-outlet>
   </main>
   <aside *ngIf="!routerService.isOnRoute('/') && !routerService.isJustAForm()" class="inter-navbar">
     <app-navbar></app-navbar>
   </aside>
-</div>
+</div> -->
 
 
