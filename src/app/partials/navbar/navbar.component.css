@@ -20,7 +20,7 @@
 /* Barra lateral vertical */
 .navbar {
     background-color: var(--color-navbar-bg);
-    height: 100vh;
+    height: calc(100vh - 90px);
     width: 190px;
     display: flex;
     flex-direction: column;
