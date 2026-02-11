@@ -35,10 +35,10 @@ export class LoginService {
   }
 
   signin(login: Login) {
-    this.http.post<{ token: string }>(`${this.baseUrl}signin`, login).subscribe({
+    this.http.post<{ access_token: string }>(`${this.baseUrl}signin`, login).subscribe({
       next: response => {
         //console.log(response.token.split('Bearer '));
-        const token = response.token.split('Bearer ')[1];
+        const token = response.access_token.split('Bearer ')[1];
         localStorage.setItem('token', token);
         this.isLogedSignal.set(true);
         Swal.fire({
