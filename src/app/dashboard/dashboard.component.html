@@ -18,22 +18,10 @@
             </div>
         </div> -->
 
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front active-projects-border">
-                    <p class="title active-projects">Proyectos Activos</p>
-                    <p class="giant">{{dashboard.stats().activeProjectsNumber}}</p>
-                </div>
-                <div class="flip-card-back active-projects-back active-projects-border">
-                    <p class="title">Resumen</p>
-                    <ul class="list">
-                        <li *ngFor="let prj of dashboard.stats().recentProyects">
-                            {{prj.name}}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <app-dashboardcard 
+        [title]="'Proyectos Activos'"
+        [number]="dashboard.stats().activeProjectsNumber"
+        [list]="dashboard.stats().recentProyects"></app-dashboardcard>
 
         <div class="flip-card">
             <div class="flip-card-inner">
