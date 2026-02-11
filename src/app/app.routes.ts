@@ -11,16 +11,27 @@ import { ProjecthomeComponent } from './projecthome/projecthome.component';
 import { AddmemberComponent } from './addmember/addmember.component';
 import { ListTaskComponent } from './list-task/list-task.component';
 import { PruebaComponent } from './prueba/prueba.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from '@/home/home.component';
 
 
 export const routes: Routes = [
-    
-    {path: '', component: IndexComponent},
-    
-    {path: 'register', component: RegisterComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'dashboard', component: HomeComponent},
+
+    { path: '', component: IndexComponent },
+
+    { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent },
+    {
+        path: 'dashboard', component: HomeComponent, children: [
+                {path: '', component: DashboardComponent},
+                {path: 'profile', component: ProfileComponent},
+                {path: 'projects', children: [
+                    {path: '', component: ListProjectsComponent},
+                    {path: 'newproject', component: NewProjectComponent, pathMatch: 'full'},
+                    {path: 'projectView', component: ProjecthomeComponent},
+                    //{path: ':projectName', component: ProjecthomeComponent}
+                ]}
+        ]
+    },
     // Coming soon...
     // {path: 'dashboard', component: DashboardComponent, children: [
     //     {path: '', component: HomeComponent},
@@ -32,17 +43,19 @@ export const routes: Routes = [
     //         //{path: ':projectName', component: ProjecthomeComponent}
     //     ]}
     // ]},
-    {path: 'profile', component: ProfileComponent},
-    {path: 'projects', children: [
-        {path: '', component: ListProjectsComponent},
-        {path: 'newproject', component: NewProjectComponent, pathMatch: 'full'},
-        {path: 'projectView', component: ProjecthomeComponent},
-        //{path: ':projectName', component: ProjecthomeComponent}
-    ]},
-    {path: 'tasks', component: ListTaskComponent},
-    {path: 'addColaborators', component: AddmemberComponent},
-    {path: 'prueba', component: PruebaComponent},
-    {path: 'adminSection', loadChildren: () => import('./admin/adminroutes').then(m => m.routes)}, 
+    { path: 'profile', component: ProfileComponent },
+    {
+        path: 'projects', children: [
+            { path: '', component: ListProjectsComponent },
+            { path: 'newproject', component: NewProjectComponent, pathMatch: 'full' },
+            { path: 'projectView', component: ProjecthomeComponent },
+            //{path: ':projectName', component: ProjecthomeComponent}
+        ]
+    },
+    { path: 'tasks', component: ListTaskComponent },
+    { path: 'addColaborators', component: AddmemberComponent },
+    { path: 'prueba', component: PruebaComponent },
+    { path: 'adminSection', loadChildren: () => import('./admin/adminroutes').then(m => m.routes) },
     //con esto cargan las rutas perezosas de quedando así => /adminSection/ruta
-    {path: '**', component: LoginComponent}
+    { path: '**', component: LoginComponent }
 ];

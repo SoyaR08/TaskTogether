@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from '../partials/navbar/navbar.component';
+import { Component, inject, OnInit  } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { DashboardService } from '../services/dashboard.service';
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet, NavbarComponent],
+  imports: [NgFor],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
 
+  dashboard: DashboardService = inject(DashboardService)
 
+  ngOnInit(): void {
+    this.dashboard.getUserStats();
+    console.log(this.dashboard.stats().activeProjectsNumber)
+  }
 
 }
