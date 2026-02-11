@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './partials/navbar/navbar.component';
 import { Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { RouteService } from './services/route.service';
@@ -9,7 +8,7 @@ import { HeaderComponent } from './partials/header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, HeaderComponent, NgClass, NgIf],
+  imports: [RouterOutlet, HeaderComponent, NgClass, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

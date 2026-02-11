@@ -1,9 +1,11 @@
-<header *ngIf="!routerService.isJustAForm()">
-  <app-header></app-header>
-</header>
-<main [ngClass]="{'justAForm': routerService.isJustAForm()}">
-  <router-outlet></router-outlet>
-</main>
+<div class="h-screen w-screen grid grid-rows-[90px_1fr]">
+  <header *ngIf="!routerService.isJustAForm()">
+    <app-header></app-header>
+  </header>
+  <main [ngClass]="{'justAForm': routerService.isJustAForm()}">
+    <router-outlet></router-outlet>
+  </main>
+</div>
 
 <!-- <div [ngClass]="{
   'grid lg:grid-cols-[190px_1fr] md:grid-cols-[1fr] lg:grid-rows-[70px_1fr] md:grid-rows-[70px_1fr_100px] overflow-hidden m-0 w-full h-full lg:gap-[0px_10px] md:gap-2.5' 
